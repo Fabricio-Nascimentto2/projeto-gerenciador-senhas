@@ -368,13 +368,13 @@ public class TeleAtendente extends javax.swing.JFrame {
 
         pnlInformaçõesUsuario.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 380, 80));
 
-        lblOpcaoPioridade.setText("Opção de Pioridade");
+        lblOpcaoPioridade.setText("Opção de Prioridade");
         pnlInformaçõesUsuario.add(lblOpcaoPioridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         pnlTelaAtendente.add(pnlInformaçõesUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 950, 390));
 
         btnGerarSenha.setBackground(new java.awt.Color(153, 255, 153));
-        btnGerarSenha.setText("Gerar Senhar");
+        btnGerarSenha.setText("Gerar Senha");
         btnGerarSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 255, 102)));
         btnGerarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,7 +391,7 @@ public class TeleAtendente extends javax.swing.JFrame {
         pnlOpcoesAtendimento.setBackground(new java.awt.Color(255, 255, 255));
         pnlOpcoesAtendimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        cbmGuiche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guiche 1 - FINACEIRO E REGULAÇÃO FISCAL.", "Guiche 2 - SOCIAL.", "Guiche 3 - DOCUMENTAÇÃO E INDENTIFICAÇÃO.", "Guiche 4 - TÂNSITO E VEICULOS.", "Guiche 5 - TRABALHO E RENDA.", "Guiche 6 - SAÚDE E PREVIDÊNCIA.", " " }));
+        cbmGuiche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guiche 1 - FINANCEIRO E REGULAÇÃO FISCAL.", "Guiche 2 - SOCIAL.", "Guiche 3 - DOCUMENTAÇÃO E INDENTIFICAÇÃO.", "Guiche 4 - TÂNSITO E VEICULOS.", "Guiche 5 - TRABALHO E RENDA.", "Guiche 6 - SAÚDE E PREVIDÊNCIA.", " " }));
         cbmGuiche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbmGuicheActionPerformed(evt);
@@ -401,7 +401,7 @@ public class TeleAtendente extends javax.swing.JFrame {
         btnGerarsenhaPioritaria.setBackground(new java.awt.Color(255, 255, 204));
         btnGerarsenhaPioritaria.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         btnGerarsenhaPioritaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/TelaAtendente/velho.png"))); // NOI18N
-        btnGerarsenhaPioritaria.setText("Senha Pioritaria");
+        btnGerarsenhaPioritaria.setText("Senha Prioritaria");
         btnGerarsenhaPioritaria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 102)));
 
         javax.swing.GroupLayout pnlOpcoesAtendimentoLayout = new javax.swing.GroupLayout(pnlOpcoesAtendimento);
@@ -410,8 +410,8 @@ public class TeleAtendente extends javax.swing.JFrame {
             pnlOpcoesAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOpcoesAtendimentoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(cbmGuiche, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(cbmGuiche, 0, 370, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnGerarsenhaPioritaria, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -450,12 +450,12 @@ public class TeleAtendente extends javax.swing.JFrame {
 
         lblAtendimentosPioridade.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         lblAtendimentosPioridade.setForeground(new java.awt.Color(255, 255, 255));
-        lblAtendimentosPioridade.setText("Pioridade");
+        lblAtendimentosPioridade.setText("Prioridade");
         pnlMenuAtendente.add(lblAtendimentosPioridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 311, -1, -1));
 
         lblSenhasNormais.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         lblSenhasNormais.setForeground(new java.awt.Color(255, 255, 255));
-        lblSenhasNormais.setText("Senhas não Pioritaria");
+        lblSenhasNormais.setText("Senhas não Prioritaria");
         pnlMenuAtendente.add(lblSenhasNormais, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 234, -1, -1));
         pnlMenuAtendente.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 144, 250, 10));
 

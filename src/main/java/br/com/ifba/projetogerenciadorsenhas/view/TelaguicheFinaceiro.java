@@ -80,7 +80,7 @@ public class TelaguicheFinaceiro extends javax.swing.JFrame {
         pnlMenuGuiche.add(lblSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         lblNomecraturaSetor.setForeground(new java.awt.Color(255, 255, 255));
-        lblNomecraturaSetor.setText("FINACEIRO E REGULAÇÃO FISCAL");
+        lblNomecraturaSetor.setText("FINANCEIRO E REGULAÇÃO FISCAL");
         pnlMenuGuiche.add(lblNomecraturaSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         lblStatus.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N

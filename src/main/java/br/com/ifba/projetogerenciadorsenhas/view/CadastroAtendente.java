@@ -98,7 +98,7 @@ public class CadastroAtendente extends javax.swing.JPanel {
         lblGuiche.setText("Guiche");
         pnlInformaçõesAtendente.add(lblGuiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, -1, -1));
 
-        cbmGuiche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guiche 1 - FINACEIRO E REGULAÇÃO FISCAL.", "Guiche 2 - SOCIAL.", "Guiche 3 - DOCUMENTAÇÃO E INDENTIFICAÇÃO.", "Guiche 4 - TÂNSITO E VEICULOS.", "Guiche 5 - TRABALHO E RENDA.", "Guiche 6 - SAÚDE E PREVIDÊNCIA.", " " }));
+        cbmGuiche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guiche 1 - FINANCEIRO E REGULAÇÃO FISCAL.", "Guiche 2 - SOCIAL.", "Guiche 3 - DOCUMENTAÇÃO E INDENTIFICAÇÃO.", "Guiche 4 - TÂNSITO E VEICULOS.", "Guiche 5 - TRABALHO E RENDA.", "Guiche 6 - SAÚDE E PREVIDÊNCIA.", " " }));
         cbmGuiche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbmGuicheActionPerformed(evt);

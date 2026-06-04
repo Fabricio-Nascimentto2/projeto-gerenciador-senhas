@@ -248,7 +248,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="7">
-                    <StringItem index="0" value="Guiche 1 - FINACEIRO E REGULA&#xc7;&#xc3;O FISCAL."/>
+                    <StringItem index="0" value="Guiche 1 - FINANCEIRO E REGULA&#xc7;&#xc3;O FISCAL."/>
                     <StringItem index="1" value="Guiche 2 - SOCIAL."/>
                     <StringItem index="2" value="Guiche 3 - DOCUMENTA&#xc7;&#xc3;O E INDENTIFICA&#xc7;&#xc3;O."/>
                     <StringItem index="3" value="Guiche 4 - T&#xc2;NSITO E VEICULOS."/>
