@@ -4,6 +4,9 @@
 
 package br.com.ifba.projetogerenciadorsenhas;
 
+import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
+import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+import br.com.ifba.projetogerenciadorsenhas.view.TelaLogin;
 import br.com.ifba.projetogerenciadorsenhas.view.TeleAtendente;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -13,15 +16,18 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class ProjetoGerenciadorSenhas {
 
     public static void main(String[] args) {
-        // Desativa o modo 'headless' para permitir que o Spring Boot abra componentes visuais (Swing/AWT)
+        // Inicializa o contexto do Spring Boot de modo "headless" desativado para aceitar interfaces Swing
         ConfigurableApplicationContext context = new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class)
                 .headless(false)
                 .run(args);
 
-        // Inicializa a interface gráfica de forma segura na thread de eventos do Swing
+        // Recupera os repositórios gerenciados pelo Spring
+        ClienteRepository clienteRepo = context.getBean(ClienteRepository.class);
+        PerfilRepository perfilRepo = context.getBean(PerfilRepository.class);
+
+        // Abre a Tela de Login passando as conexões com maestria
         java.awt.EventQueue.invokeLater(() -> {
-            TeleAtendente tela = new TeleAtendente();
-            tela.setVisible(true);
+            new TelaLogin(clienteRepo, perfilRepo).setVisible(true);
         });
     }
 }

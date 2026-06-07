@@ -120,7 +120,7 @@ public class TeleAtendente extends javax.swing.JFrame {
         pnlInformaçõesUsuario.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
 
         lblDescriação.setText("Descrição");
-        pnlInformaçõesUsuario.add(lblDescriação, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
+        pnlInformaçõesUsuario.add(lblDescriação, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, -1, -1));
 
         pnlNomeUsuario.setBackground(new java.awt.Color(255, 255, 255));
         pnlNomeUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
@@ -324,8 +324,8 @@ public class TeleAtendente extends javax.swing.JFrame {
         pnlDescricaoLayout.setHorizontalGroup(
             pnlDescricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDescricaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlDescricaoLayout.setVerticalGroup(
@@ -336,14 +336,21 @@ public class TeleAtendente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlInformaçõesUsuario.add(pnlDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 500, 80));
+        pnlInformaçõesUsuario.add(pnlDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 470, 80));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
 
+        rbtAtendimentoPioritario.setBackground(new java.awt.Color(255, 255, 255));
         rbtAtendimentoPioritario.setText("Usuário com necessidade de atendimento prioritário");
 
+        rbtAtendimentoNorma.setBackground(new java.awt.Color(255, 255, 255));
         rbtAtendimentoNorma.setText("Usuário sem necessidade de atendimento prioritário");
+        rbtAtendimentoNorma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtAtendimentoNormaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -352,9 +359,9 @@ public class TeleAtendente extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtAtendimentoPioritario)
-                    .addComponent(rbtAtendimentoNorma))
-                .addContainerGap(11, Short.MAX_VALUE))
+                    .addComponent(rbtAtendimentoNorma, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(rbtAtendimentoPioritario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,7 +373,7 @@ public class TeleAtendente extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
-        pnlInformaçõesUsuario.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 380, 80));
+        pnlInformaçõesUsuario.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 420, 80));
 
         lblOpcaoPioridade.setText("Opção de Prioridade");
         pnlInformaçõesUsuario.add(lblOpcaoPioridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
@@ -631,6 +638,10 @@ public class TeleAtendente extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_tblDadosTotaisAncestorAdded
+
+    private void rbtAtendimentoNormaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAtendimentoNormaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtAtendimentoNormaActionPerformed
 
     /**
      * @param args the command line arguments
