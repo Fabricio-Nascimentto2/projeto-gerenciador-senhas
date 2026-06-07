@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 
-	package br.com.ifba.projetogerenciadorsenhas.view;
+
+package br.com.ifba.projetogerenciadorsenhas.view;
 
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
@@ -20,7 +17,7 @@ public class CadastroAtendente extends javax.swing.JPanel {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         pnlCadastroAtendente = new javax.swing.JPanel();
@@ -153,50 +150,48 @@ public class CadastroAtendente extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlCadastroAtendente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnSavarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:initComponents
-        // Captura das Strings do formulário preenchidas pelo Administrador
-        String nomeStr = txtNome.getText().trim();
-        String cpfStr = txtCPF.getText().trim();
-        String usuarioStr = txtUsuario.getText().trim();
-        String senhaStr = txtSenha.getText().trim();
+    private void btnSavarActionPerformed(java.awt.event.ActionEvent evt) {                          
+        String nomeStr = txtNome.getText() != null ? txtNome.getText().trim() : "";
+        String cpfStr = txtCPF.getText() != null ? txtCPF.getText().trim() : "";
+        String senhaStr = txtSenha.getText() != null ? txtSenha.getText().trim() : "";
 
-        // Validação defensiva básica
-        if (nomeStr.isEmpty() || cpfStr.isEmpty() || usuarioStr.isEmpty() || senhaStr.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios!");
+        if (nomeStr.isEmpty() || cpfStr.isEmpty() || senhaStr.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios (Nome, CPF e Senha)!");
             return;
         }
 
         try {
-            // Instancia a classe de domínio utilizada para persistir os usuários do sistema
             br.com.ifba.projetogerenciadorsenhas.domain.Cliente novoAtendente = new br.com.ifba.projetogerenciadorsenhas.domain.Cliente();
             novoAtendente.setNome(nomeStr);
             novoAtendente.setCpf(cpfStr);
-            
-            // Mapeia os campos de login e credenciais nas colunas correspondentes (CPF como login e Telefone como senha temporária)
             novoAtendente.setBairro("Atendente - Ativo"); 
-            novoAtendente.setCidade((String) cbmGuiche.getSelectedItem()); // Salva o guichê escolhido
-            novoAtendente.setDescricao((String) cmbPerfil.getSelectedItem()); // Salva o nível de perfil
-            novoAtendente.setTelefone(senhaStr); // Senha utilizada na validação de login da tela principal
+            novoAtendente.setTelefone(senhaStr); 
+            
+            if (cbmGuiche.getSelectedItem() != null) {
+                novoAtendente.setCidade((String) cbmGuiche.getSelectedItem()); 
+            }
+            if (cmbPerfil.getSelectedItem() != null) {
+                novoAtendente.setDescricao((String) cmbPerfil.getSelectedItem()); 
+            }
 
-            // Grava os dados fisicamente no banco H2
             clienteRepository.save(novoAtendente);
 
             javax.swing.JOptionPane.showMessageDialog(this, "Atendente cadastrado com sucesso no banco de dados!");
-            
-            // Fecha a janela dialog atual de forma limpa
             javax.swing.SwingUtilities.getWindowAncestor(this).dispose();
             
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar no banco: " + e.getMessage());
         }
-    }//GEN-LAST:initComponents
+    
+    }                         
 
     private void btnCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:initComponents
         javax.swing.SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:initComponents
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancela;
     private javax.swing.JButton btnSavar;
     private javax.swing.JComboBox<String> cbmGuiche;
@@ -217,4 +212,5 @@ public class CadastroAtendente extends javax.swing.JPanel {
     private javax.swing.JTextField txtSenha;
     private javax.swing.JLabel txtTextoCadastro;
     private javax.swing.JTextField txtUsuario;
+    // End of variables declaration//GEN-END:variables
 }

@@ -41,40 +41,52 @@ public class Cliente {
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
+    // Exemplo de como devem ficar os Setters e Getters corretos:
     public String getNome() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return nome;
     }
 
-    public Object getCpf() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Object getTelefone() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setNome(String nomeStr) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public void setCpf(String cpfStr) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getBairro() {
+        return bairro;
     }
 
-    public void setBairro(String atendente__Ativo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
-    public void setCidade(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setDescricao(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
-    public void setTelefone(String senhaStr) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getDescricao() {
+        return descricao;
     }
-    
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 }

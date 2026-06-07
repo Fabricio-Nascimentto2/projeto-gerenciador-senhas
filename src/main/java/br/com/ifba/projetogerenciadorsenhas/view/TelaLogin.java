@@ -15,10 +15,6 @@ public class TelaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    private TelaLogin() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     @SuppressWarnings("unchecked")
     private void initComponents() {
         pnlFundotela = new javax.swing.JPanel();

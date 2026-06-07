@@ -21,9 +21,9 @@ public class TelaAdministrador extends javax.swing.JFrame {
     }
 
     private TelaAdministrador() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this(null, null);
     }
-
+    
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
