@@ -190,7 +190,8 @@ public class TelaLogin extends javax.swing.JFrame {
         br.com.ifba.projetogerenciadorsenhas.domain.Cliente usuarioLogado = null;
 
         for (br.com.ifba.projetogerenciadorsenhas.domain.Cliente c : todosClientes) {
-            if (c.getCpf() != null && c.getCpf().equals(usuarioDigitado) && c.getTelefone() != null && c.getTelefone().equals(senhaDigitada)) {
+            if (c.getCpf() != null && c.getCpf().equalsIgnoreCase(usuarioDigitado) && 
+                c.getTelefone() != null && c.getTelefone().equals(senhaDigitada)) {
                 usuarioLogado = c;
                 break;
             }
@@ -200,12 +201,21 @@ public class TelaLogin extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Usuário ou Senha incorretos!");
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Bem-vindo, " + usuarioLogado.getNome() + "!");
-            TelaAdministrador telaAdmin = new TelaAdministrador(clienteRepository, perfilRepository);
-            telaAdmin.setVisible(true);
-            this.dispose();
+            
+            String perfil = usuarioLogado.getDescricao() != null ? usuarioLogado.getDescricao() : "";
+            
+            if (perfil.contains("ADMINISTRADOR")) {
+                TelaAdministrador telaAdmin = new TelaAdministrador(clienteRepository, perfilRepository);
+                telaAdmin.setVisible(true);
+                this.dispose();
+            } else {
+                TeleAtendente painelAtendente = new TeleAtendente(clienteRepository, perfilRepository);
+                painelAtendente.setVisible(true);
+                
+                this.dispose();
+            }
         }
     }
-
     private javax.swing.JButton btnEntra;
     private javax.swing.JLabel lblImagemLogotipo;
     private javax.swing.JLabel lblProjct;

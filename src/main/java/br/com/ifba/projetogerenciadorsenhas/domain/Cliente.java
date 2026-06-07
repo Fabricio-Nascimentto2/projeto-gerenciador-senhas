@@ -14,12 +14,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ *
+ * @author fabricio
+ */
 @Entity
 @Table(name = "clientes")
 @Data 
 @NoArgsConstructor 
 @AllArgsConstructor 
-// O @Component foi removido daqui
 public class Cliente {
 
     @Id
@@ -41,7 +44,6 @@ public class Cliente {
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
-    // Exemplo de como devem ficar os Setters e Getters corretos:
     public String getNome() {
         return nome;
     }

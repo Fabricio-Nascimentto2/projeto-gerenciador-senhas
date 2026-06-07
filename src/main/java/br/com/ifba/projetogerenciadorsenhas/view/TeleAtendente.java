@@ -4,18 +4,31 @@
  */
 package br.com.ifba.projetogerenciadorsenhas.view;
 
+import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
+import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+
 /**
  *
  * @author fabricio
  */
 public class TeleAtendente extends javax.swing.JFrame {
 
+    private final ClienteRepository clienteRepository;
+    private final PerfilRepository perfilRepository;
+
     /**
      * Creates new form TeleAtendente
      */
-    public TeleAtendente() {
+    public TeleAtendente(ClienteRepository clienteRepository, PerfilRepository perfilRepository) {
+        this.clienteRepository = clienteRepository;
+        this.perfilRepository = perfilRepository;
         initComponents();
-        
+        setLocationRelativeTo(null); // Centraliza a tela ao abrir
+    }
+
+    // 3. Deixe o construtor antigo vazio chamando o principal com null (para calar os avisos do NetBeans)
+    public TeleAtendente() {
+        this(null, null);
     }
 
     /**

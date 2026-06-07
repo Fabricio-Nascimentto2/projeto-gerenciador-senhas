@@ -218,14 +218,12 @@ public class TelaAdministrador extends javax.swing.JFrame {
     }
 
     private void btnCadastraAtendentesActionPerformed(java.awt.event.ActionEvent evt) {
-        // Instancia o painel passando os repositórios injetados do Spring Boot
         CadastroAtendente painelCadastro = new CadastroAtendente(clienteRepository, perfilRepository);
         
-        // Cria uma caixa de diálogo modal para renderizar o JPanel na tela do Linux
         javax.swing.JDialog janelaModal = new javax.swing.JDialog(this, "Módulo de Cadastro", true);
         janelaModal.getContentPane().add(painelCadastro);
         janelaModal.pack();
-        janelaModal.setLocationRelativeTo(this); // Centraliza em relação ao painel principal
+        janelaModal.setLocationRelativeTo(this); 
         janelaModal.setVisible(true);
     }
 

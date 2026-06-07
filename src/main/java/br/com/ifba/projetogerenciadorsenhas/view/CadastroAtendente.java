@@ -1,9 +1,12 @@
-
-
 package br.com.ifba.projetogerenciadorsenhas.view;
 
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+
+/**
+ *
+ * @author fabricio
+ */
 
 public class CadastroAtendente extends javax.swing.JPanel {
 
@@ -153,21 +156,25 @@ public class CadastroAtendente extends javax.swing.JPanel {
     }// </editor-fold>                        
 
     private void btnSavarActionPerformed(java.awt.event.ActionEvent evt) {                          
+       // A. Aqui o sistema pega os textos que você digitou nas caixas da tela
         String nomeStr = txtNome.getText() != null ? txtNome.getText().trim() : "";
-        String cpfStr = txtCPF.getText() != null ? txtCPF.getText().trim() : "";
+        String usuarioStr = txtUsuario.getText() != null ? txtUsuario.getText().trim() : ""; 
         String senhaStr = txtSenha.getText() != null ? txtSenha.getText().trim() : "";
 
-        if (nomeStr.isEmpty() || cpfStr.isEmpty() || senhaStr.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios (Nome, CPF e Senha)!");
+        // B. Validação simples: não deixa salvar se esquecer de preencher algum desses três
+        if (nomeStr.isEmpty() || usuarioStr.isEmpty() || senhaStr.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios (Nome, Usuário e Senha)!");
             return;
         }
 
         try {
             br.com.ifba.projetogerenciadorsenhas.domain.Cliente novoAtendente = new br.com.ifba.projetogerenciadorsenhas.domain.Cliente();
+            
+            // C. Aqui está o segredo: Guardamos o USUÁRIO dentro da coluna CPF do banco
             novoAtendente.setNome(nomeStr);
-            novoAtendente.setCpf(cpfStr);
+            novoAtendente.setCpf(usuarioStr);     
+            novoAtendente.setTelefone(senhaStr);  
             novoAtendente.setBairro("Atendente - Ativo"); 
-            novoAtendente.setTelefone(senhaStr); 
             
             if (cbmGuiche.getSelectedItem() != null) {
                 novoAtendente.setCidade((String) cbmGuiche.getSelectedItem()); 
@@ -176,6 +183,7 @@ public class CadastroAtendente extends javax.swing.JPanel {
                 novoAtendente.setDescricao((String) cmbPerfil.getSelectedItem()); 
             }
 
+            // D. Salva de verdade no Banco H2
             clienteRepository.save(novoAtendente);
 
             javax.swing.JOptionPane.showMessageDialog(this, "Atendente cadastrado com sucesso no banco de dados!");
@@ -184,9 +192,7 @@ public class CadastroAtendente extends javax.swing.JPanel {
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar no banco: " + e.getMessage());
         }
-    
-    }                         
-
+    }
     private void btnCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:initComponents
         javax.swing.SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:initComponents
