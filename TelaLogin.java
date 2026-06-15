@@ -1,9 +1,14 @@
 package br.com.ifba.projetogerenciadorsenhas.view; import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository; import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository; 
 public class TelaLogin extends javax.swing.JFrame {
-    private final ClienteRepository clienteRepository; private final PerfilRepository perfilRepository; public TelaLogin(ClienteRepository clienteRepository, PerfilRepository perfilRepository) { 
-        this.clienteRepository = clienteRepository; this.perfilRepository = perfilRepository; initComponents(); setLocationRelativeTo(null);
+    private final ClienteRepository clienteRepository; private final PerfilRepository perfilRepository; private final br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository usuarioRepository;
+    public TelaLogin(ClienteRepository clienteRepository, PerfilRepository perfilRepository, br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository usuarioRepository) {
+        this.clienteRepository = clienteRepository;
+        this.perfilRepository = perfilRepository;
+        this.usuarioRepository = usuarioRepository;
+        initComponents(); setLocationRelativeTo(null);
     }
-    private TelaLogin() { throw new UnsupportedOperationException("Not supported yet.");
+    private TelaLogin() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     @SuppressWarnings("unchecked") private void initComponents() { pnlFundotela = new javax.swing.JPanel(); pnlComponetes = new javax.swing.JPanel(); lblUsuario = new javax.swing.JLabel(); lblSenha 
         = new javax.swing.JLabel(); pnlUsuario = new javax.swing.JPanel(); lblUsuarioLogin24 = new javax.swing.JLabel(); txtUsuario = new javax.swing.JTextField(); pnlSenha = new 
@@ -40,18 +45,18 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         pnlComponetes.add(btnEntra, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 150, 50)); lblTituloSuperior.setFont(new java.awt.Font("Liberation Sans", 0, 28)); 
         lblTituloSuperior.setText("Acessar Guichê"); pnlComponetes.add(lblTituloSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1)); lblImagemLogotipo.setIcon(new 
-        javax.swing.ImageIcon(getClass().getResource("/imagens.Login/logotipoP.png"))); pnlComponetes.add(lblImagemLogotipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 60, -1)); 
-        lblLogotipoO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens.Login/LogotipoO.png"))); pnlComponetes.add(lblLogotipoO, new 
-        org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 40)); lblLogotipoO1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens.Login/LogotipoO.png"))); 
-        pnlComponetes.add(lblLogotipoO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 40, 40)); lblProjct.setFont(new java.awt.Font("Liberation Sans", 1, 18)); 
-        lblProjct.setForeground(new java.awt.Color(0, 153, 0)); lblProjct.setText("Project"); pnlComponetes.add(lblProjct, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1)); 
+        javax.swing.ImageIcon(getClass().getResource("/imagens.Login/logotipoP.png"))); pnlComponetes.add(lblImagemLogotipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 60, -1));
+        lblLogotipoO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens.Login/LogotipoO.png"))); pnlComponetes.add(lblLogotipoO, new
+        org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 40)); lblLogotipoO1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens.Login/LogotipoO.png")));
+        pnlComponetes.add(lblLogotipoO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 40, 40)); lblProjct.setFont(new java.awt.Font("Liberation Sans", 1, 18));
+        lblProjct.setForeground(new java.awt.Color(0, 153, 0)); lblProjct.setText("Project"); pnlComponetes.add(lblProjct, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
         lblTextoInferior.setFont(new java.awt.Font("Liberation Sans", 0, 16)); lblTextoInferior.setText("Acesso de administradores e atendentes"); pnlComponetes.add(lblTextoInferior, new 
         org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1)); javax.swing.GroupLayout pnlFundotelaLayout = new javax.swing.GroupLayout(pnlFundotela); 
         pnlFundotela.setLayout(pnlFundotelaLayout); pnlFundotelaLayout.setHorizontalGroup(
             pnlFundotelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING) .addGroup(pnlFundotelaLayout.createSequentialGroup() .addGap(27, 27, 27) .addComponent(pnlComponetes, 
                 javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE) .addContainerGap(29, Short.MAX_VALUE))
         ); pnlFundotelaLayout.setVerticalGroup( pnlFundotelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING) .addGroup(pnlFundotelaLayout.createSequentialGroup() .addGap(24, 24, 
-                24) .addComponent(pnlComponetes, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE) .addContainerGap(28, Short.MAX_VALUE))
+                24) .addComponent(pnlComponetes, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE) .addContainerGap(28, Short.MAX_VALUE)));
         ); javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane()); getContentPane().setLayout(layout); layout.setHorizontalGroup( 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING) .addComponent(pnlFundotela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, 
             Short.MAX_VALUE)
@@ -64,16 +69,16 @@ public class TelaLogin extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos!"); return;
         }
         if (usuarioDigitado.equals("admin") && senhaDigitada.equals("admin")) { javax.swing.JOptionPane.showMessageDialog(this, "Acesso Administrador Provisório!"); TelaAdministrador telaAdmin = new 
-            TelaAdministrador(clienteRepository, perfilRepository); telaAdmin.setVisible(true); this.dispose(); return;
+            TelaAdministrador(clienteRepository, perfilRepository, usuarioRepository); telaAdmin.setVisible(true); this.dispose(); return;
         }
         java.util.List<br.com.ifba.projetogerenciadorsenhas.domain.Cliente> todosClientes = clienteRepository.findAll(); br.com.ifba.projetogerenciadorsenhas.domain.Cliente usuarioLogado = null; for 
         (br.com.ifba.projetogerenciadorsenhas.domain.Cliente c : todosClientes) {
             if (c.getCpf() != null && c.getCpf().equals(usuarioDigitado) && c.getTelefone() != null && c.getTelefone().equals(senhaDigitada)) { usuarioLogado = c; break;
             }
         }
-        if (usuarioLogado == null) { javax.swing.JOptionPane.showMessageDialog(this, "Usuário ou Senha incorretos!");
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Bem-vindo, " + usuarioLogado.getNome() + "!"); TelaAdministrador telaAdmin = new TelaAdministrador(clienteRepository, perfilRepository); 
+        if (usuarioLogado == null) { javax.swing.JOptionPane.showMessageDialog(this, "Usuário ou Senha incorretos!"); }
+        else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Bem-vindo, " + usuarioLogado.getNome() + "!"); TelaAdministrador telaAdmin = new TelaAdministrador(clienteRepository, perfilRepository, usuarioRepository);
             telaAdmin.setVisible(true); this.dispose();
         }
     }

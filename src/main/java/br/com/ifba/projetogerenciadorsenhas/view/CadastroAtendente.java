@@ -1,7 +1,15 @@
-package br.com.ifba.projetogerenciadorsenhas.view;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
+package br.com.ifba.projetogerenciadorsenhas.view;
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+import br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository;
+import br.com.ifba.projetogerenciadorsenhas.domain.Usuario;
+import br.com.ifba.projetogerenciadorsenhas.domain.Perfil;
+import java.util.Optional;
 
 /**
  *
@@ -12,10 +20,12 @@ public class CadastroAtendente extends javax.swing.JPanel {
 
     private final ClienteRepository clienteRepository;
     private final PerfilRepository perfilRepository;
+    private final UsuarioRepository usuarioRepository; // Adicionado UsuarioRepository
 
-    public CadastroAtendente(ClienteRepository clienteRepository, PerfilRepository perfilRepository) {
+    public CadastroAtendente(ClienteRepository clienteRepository, PerfilRepository perfilRepository, UsuarioRepository usuarioRepository) { // Construtor modificado
         this.clienteRepository = clienteRepository;
         this.perfilRepository = perfilRepository;
+        this.usuarioRepository = usuarioRepository; // Inicializa o novo repositório
         initComponents();
     }
 
@@ -158,39 +168,40 @@ public class CadastroAtendente extends javax.swing.JPanel {
     private void btnSavarActionPerformed(java.awt.event.ActionEvent evt) {                          
        // A. Aqui o sistema pega os textos que você digitou nas caixas da tela
         String nomeStr = txtNome.getText() != null ? txtNome.getText().trim() : "";
-        String usuarioStr = txtUsuario.getText() != null ? txtUsuario.getText().trim() : ""; 
+        String usuarioLogin = txtUsuario.getText() != null ? txtUsuario.getText().trim() : ""; 
         String senhaStr = txtSenha.getText() != null ? txtSenha.getText().trim() : "";
+        String perfilSelecionado = (String) cmbPerfil.getSelectedItem(); // Obtém a string do perfil selecionado
 
         // B. Validação simples: não deixa salvar se esquecer de preencher algum desses três
-        if (nomeStr.isEmpty() || usuarioStr.isEmpty() || senhaStr.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios (Nome, Usuário e Senha)!");
+        if (nomeStr.isEmpty() || usuarioLogin.isEmpty() || senhaStr.isEmpty() || perfilSelecionado == null || perfilSelecionado.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios (Nome, Usuário, Senha e Perfil)!");
             return;
         }
 
         try {
-            br.com.ifba.projetogerenciadorsenhas.domain.Cliente novoAtendente = new br.com.ifba.projetogerenciadorsenhas.domain.Cliente();
+            // 1. Encontrar o Perfil correto
+            // Assumindo que a string do perfil é "ID - NOME", extraímos o NOME
+            String perfilName = perfilSelecionado.split(" - ")[1]; 
+            Optional<Perfil> perfilOptional = perfilRepository.findByNome(perfilName); // Necessário adicionar findByNome(String nome) ao PerfilRepository
             
-            // C. Aqui está o segredo: Guardamos o USUÁRIO dentro da coluna CPF do banco
-            novoAtendente.setNome(nomeStr);
-            novoAtendente.setCpf(usuarioStr);     
-            novoAtendente.setTelefone(senhaStr);  
-            novoAtendente.setBairro("Atendente - Ativo"); 
-            
-            if (cbmGuiche.getSelectedItem() != null) {
-                novoAtendente.setCidade((String) cbmGuiche.getSelectedItem()); 
-            }
-            if (cmbPerfil.getSelectedItem() != null) {
-                novoAtendente.setDescricao((String) cmbPerfil.getSelectedItem()); 
+            if (!perfilOptional.isPresent()) { // Correção: Verificar se o Optional contém um valor
+                javax.swing.JOptionPane.showMessageDialog(this, "Erro: Perfil selecionado não encontrado no banco de dados!");
+                return;
             }
 
-            // D. Salva de verdade no Banco H2
-            clienteRepository.save(novoAtendente);
+            // 2. Criar e salvar o objeto Usuario
+            Usuario novoUsuario = new Usuario();
+            novoUsuario.setLogin(usuarioLogin); // Correção: Atribuir o login
+            novoUsuario.setSenha(senhaStr); // ATENÇÃO: Senha ainda em texto puro. Implementar hash é CRÍTICO!
+            novoUsuario.setPerfil(perfilOptional.get()); // Correção: Obter o Perfil do Optional
 
-            javax.swing.JOptionPane.showMessageDialog(this, "Atendente cadastrado com sucesso no banco de dados!");
+            usuarioRepository.save(novoUsuario);
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Atendente (Usuário) cadastrado com sucesso no banco de dados!");
             javax.swing.SwingUtilities.getWindowAncestor(this).dispose();
             
         } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar no banco: " + e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(this, "erro ao salvar no banco: " + e.getMessage());
         }
     }
     private void btnCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:initComponents

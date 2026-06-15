@@ -6,28 +6,46 @@ package br.com.ifba.projetogerenciadorsenhas;
 
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+import br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository;
+import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
 import br.com.ifba.projetogerenciadorsenhas.view.TelaLogin;
-import br.com.ifba.projetogerenciadorsenhas.view.TeleAtendente;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "br.com.ifba.projetogerenciadorsenhas")
+@EnableJpaRepositories(basePackages = "br.com.ifba.projetogerenciadorsenhas.repository")
 public class ProjetoGerenciadorSenhas {
 
     public static void main(String[] args) {
-        // Inicializa o contexto do Spring Boot de modo "headless" desativado para aceitar interfaces Swing
-        ConfigurableApplicationContext context = new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class)
-                .headless(false)
-                .run(args);
 
-        // Recupera os repositórios gerenciados pelo Spring
-        ClienteRepository clienteRepo = context.getBean(ClienteRepository.class);
-        PerfilRepository perfilRepo = context.getBean(PerfilRepository.class);
+        ConfigurableApplicationContext context =
+                new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class)
+                        .headless(false)
+                        .run(args);
 
-        // Abre a Tela de Login passando as conexões com maestria
+        ClienteRepository clienteRepository =
+        context.getBean(ClienteRepository.class);
+
+PerfilRepository perfilRepository =
+        context.getBean(PerfilRepository.class);
+
+UsuarioRepository usuarioRepository =
+        context.getBean(UsuarioRepository.class);
+
+UsuarioService usuarioService =
+        context.getBean(UsuarioService.class);
+
         java.awt.EventQueue.invokeLater(() -> {
-            new TelaLogin(clienteRepo, perfilRepo).setVisible(true);
-        });
+    new TelaLogin(
+            clienteRepository,
+            perfilRepository,
+            usuarioRepository,
+            usuarioService
+    ).setVisible(true);
+});
     }
 }

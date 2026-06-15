@@ -11,7 +11,7 @@ import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
  *
  * @author fabricio
  */
-public class TeleAtendente extends javax.swing.JFrame {
+public class TelaAtendente1 extends javax.swing.JFrame {
 
     private final ClienteRepository clienteRepository;
     private final PerfilRepository perfilRepository;
@@ -19,15 +19,14 @@ public class TeleAtendente extends javax.swing.JFrame {
     /**
      * Creates new form TeleAtendente
      */
-    public TeleAtendente(ClienteRepository clienteRepository, PerfilRepository perfilRepository) {
+    public TelaAtendente1(ClienteRepository clienteRepository, PerfilRepository perfilRepository) {
         this.clienteRepository = clienteRepository;
         this.perfilRepository = perfilRepository;
         initComponents();
-        setLocationRelativeTo(null); // Centraliza a tela ao abrir
+        setLocationRelativeTo(null);
     }
 
-    // 3. Deixe o construtor antigo vazio chamando o principal com null (para calar os avisos do NetBeans)
-    public TeleAtendente() {
+    public TelaAtendente1() {
         this(null, null);
     }
 
@@ -40,9 +39,8 @@ public class TeleAtendente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jSeparator2 = new javax.swing.JSeparator();
-        pnlTelaAtendente = new javax.swing.JPanel();
+        pnlComponetes = new javax.swing.JPanel();
+        lblTextoSuperior = new javax.swing.JLabel();
         pnlInformaçõesUsuario = new javax.swing.JPanel();
         lblNomeUsuario = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
@@ -75,34 +73,37 @@ public class TeleAtendente extends javax.swing.JFrame {
         rbtAtendimentoPioritario = new javax.swing.JRadioButton();
         rbtAtendimentoNorma = new javax.swing.JRadioButton();
         lblOpcaoPioridade = new javax.swing.JLabel();
-        btnGerarSenha = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         pnlOpcoesAtendimento = new javax.swing.JPanel();
         cbmGuiche = new javax.swing.JComboBox<>();
         btnGerarsenhaPioritaria = new javax.swing.JButton();
+        btnGerarSenha = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        lblConfiguraçõesAtendimento = new javax.swing.JLabel();
         pnlMenuAtendente = new javax.swing.JPanel();
-        lblPainelAtendente = new javax.swing.JLabel();
+        lblPainelAtendente1 = new javax.swing.JLabel();
         lblNumerosAtendimentos = new javax.swing.JLabel();
-        lblAtendimentosTotal = new javax.swing.JLabel();
-        lblAtendimentosPioridade = new javax.swing.JLabel();
-        lblSenhasNormais = new javax.swing.JLabel();
+        lblAtendimentosTotal1 = new javax.swing.JLabel();
+        lblAtendimentosPioridade1 = new javax.swing.JLabel();
+        lblSenhasNormais1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         pnlTotaldeAtendimentos = new javax.swing.JPanel();
         lblTotaldeAtendimentos = new javax.swing.JLabel();
-        pnlSenhasnaoPioritarias = new javax.swing.JPanel();
-        lblSenhasnaoPioritarias = new javax.swing.JLabel();
+        pnlSenhasnaoPioritarias2 = new javax.swing.JPanel();
+        lblSenhasnaoPioritarias2 = new javax.swing.JLabel();
         pnlTotalPioridade = new javax.swing.JPanel();
         txtTotalPioridade = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblDadosTotais = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblDadosTotais1 = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
-        lblConfiguraçõesAtendimento = new javax.swing.JLabel();
-        lblTextoSuperior = new javax.swing.JLabel();
+        btnSairtelaAtendente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlTelaAtendente.setBackground(new java.awt.Color(255, 255, 255));
-        pnlTelaAtendente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlComponetes.setBackground(new java.awt.Color(255, 255, 255));
+        pnlComponetes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTextoSuperior.setText("Módulo Recepção - Cadastro de Cliente para Atendimento");
+        pnlComponetes.add(lblTextoSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
 
         pnlInformaçõesUsuario.setBackground(new java.awt.Color(255, 255, 255));
         pnlInformaçõesUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -391,22 +392,7 @@ public class TeleAtendente extends javax.swing.JFrame {
         lblOpcaoPioridade.setText("Opção de Prioridade");
         pnlInformaçõesUsuario.add(lblOpcaoPioridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        pnlTelaAtendente.add(pnlInformaçõesUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 950, 390));
-
-        btnGerarSenha.setBackground(new java.awt.Color(153, 255, 153));
-        btnGerarSenha.setText("Gerar Senha");
-        btnGerarSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 255, 102)));
-        btnGerarSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerarSenhaActionPerformed(evt);
-            }
-        });
-        pnlTelaAtendente.add(btnGerarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 500, 250, 70));
-
-        btnCancelar.setBackground(new java.awt.Color(255, 0, 0));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
-        pnlTelaAtendente.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 590, 250, 60));
+        pnlComponetes.add(pnlInformaçõesUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 950, 390));
 
         pnlOpcoesAtendimento.setBackground(new java.awt.Color(255, 255, 255));
         pnlOpcoesAtendimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -445,38 +431,56 @@ public class TeleAtendente extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        pnlTelaAtendente.add(pnlOpcoesAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 660, 150));
+        pnlComponetes.add(pnlOpcoesAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 660, 150));
+
+        btnGerarSenha.setBackground(new java.awt.Color(153, 255, 153));
+        btnGerarSenha.setText("Gerar Senha");
+        btnGerarSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 255, 102)));
+        btnGerarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarSenhaActionPerformed(evt);
+            }
+        });
+        pnlComponetes.add(btnGerarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 500, 270, 70));
+
+        btnCancelar.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
+        pnlComponetes.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 580, 270, 70));
+
+        lblConfiguraçõesAtendimento.setText("Configurações de Atendimento");
+        pnlComponetes.add(lblConfiguraçõesAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, -1, -1));
 
         pnlMenuAtendente.setBackground(new java.awt.Color(0, 153, 153));
         pnlMenuAtendente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlMenuAtendente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblPainelAtendente.setBackground(new java.awt.Color(0, 153, 153));
-        lblPainelAtendente.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        lblPainelAtendente.setForeground(new java.awt.Color(255, 255, 255));
-        lblPainelAtendente.setText("Painel do Atendente");
-        pnlMenuAtendente.add(lblPainelAtendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        lblPainelAtendente1.setBackground(new java.awt.Color(0, 153, 153));
+        lblPainelAtendente1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        lblPainelAtendente1.setForeground(new java.awt.Color(255, 255, 255));
+        lblPainelAtendente1.setText("Painel do Atendente");
+        pnlMenuAtendente.add(lblPainelAtendente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         lblNumerosAtendimentos.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
         lblNumerosAtendimentos.setForeground(new java.awt.Color(255, 255, 255));
         lblNumerosAtendimentos.setText("Atendimentos do dia");
         pnlMenuAtendente.add(lblNumerosAtendimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        lblAtendimentosTotal.setBackground(new java.awt.Color(255, 255, 255));
-        lblAtendimentosTotal.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        lblAtendimentosTotal.setForeground(new java.awt.Color(255, 255, 255));
-        lblAtendimentosTotal.setText("Total");
-        pnlMenuAtendente.add(lblAtendimentosTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        lblAtendimentosTotal1.setBackground(new java.awt.Color(255, 255, 255));
+        lblAtendimentosTotal1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        lblAtendimentosTotal1.setForeground(new java.awt.Color(255, 255, 255));
+        lblAtendimentosTotal1.setText("Total");
+        pnlMenuAtendente.add(lblAtendimentosTotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
-        lblAtendimentosPioridade.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        lblAtendimentosPioridade.setForeground(new java.awt.Color(255, 255, 255));
-        lblAtendimentosPioridade.setText("Prioridade");
-        pnlMenuAtendente.add(lblAtendimentosPioridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 311, -1, -1));
+        lblAtendimentosPioridade1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        lblAtendimentosPioridade1.setForeground(new java.awt.Color(255, 255, 255));
+        lblAtendimentosPioridade1.setText("Prioridade");
+        pnlMenuAtendente.add(lblAtendimentosPioridade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 311, -1, -1));
 
-        lblSenhasNormais.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        lblSenhasNormais.setForeground(new java.awt.Color(255, 255, 255));
-        lblSenhasNormais.setText("Senhas não Prioritaria");
-        pnlMenuAtendente.add(lblSenhasNormais, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 234, -1, -1));
+        lblSenhasNormais1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        lblSenhasNormais1.setForeground(new java.awt.Color(255, 255, 255));
+        lblSenhasNormais1.setText("Senhas não Prioritaria");
+        pnlMenuAtendente.add(lblSenhasNormais1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 234, -1, -1));
         pnlMenuAtendente.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 144, 250, 10));
 
         pnlTotaldeAtendimentos.setBackground(new java.awt.Color(0, 153, 153));
@@ -505,30 +509,30 @@ public class TeleAtendente extends javax.swing.JFrame {
 
         pnlMenuAtendente.add(pnlTotaldeAtendimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 188, 250, -1));
 
-        pnlSenhasnaoPioritarias.setBackground(new java.awt.Color(0, 153, 153));
-        pnlSenhasnaoPioritarias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        pnlSenhasnaoPioritarias2.setBackground(new java.awt.Color(0, 153, 153));
+        pnlSenhasnaoPioritarias2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        lblSenhasnaoPioritarias.setForeground(new java.awt.Color(255, 255, 255));
-        lblSenhasnaoPioritarias.setText("0");
+        lblSenhasnaoPioritarias2.setForeground(new java.awt.Color(255, 255, 255));
+        lblSenhasnaoPioritarias2.setText("0");
 
-        javax.swing.GroupLayout pnlSenhasnaoPioritariasLayout = new javax.swing.GroupLayout(pnlSenhasnaoPioritarias);
-        pnlSenhasnaoPioritarias.setLayout(pnlSenhasnaoPioritariasLayout);
-        pnlSenhasnaoPioritariasLayout.setHorizontalGroup(
-            pnlSenhasnaoPioritariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSenhasnaoPioritariasLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlSenhasnaoPioritarias2Layout = new javax.swing.GroupLayout(pnlSenhasnaoPioritarias2);
+        pnlSenhasnaoPioritarias2.setLayout(pnlSenhasnaoPioritarias2Layout);
+        pnlSenhasnaoPioritarias2Layout.setHorizontalGroup(
+            pnlSenhasnaoPioritarias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSenhasnaoPioritarias2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblSenhasnaoPioritarias, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                .addComponent(lblSenhasnaoPioritarias2, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        pnlSenhasnaoPioritariasLayout.setVerticalGroup(
-            pnlSenhasnaoPioritariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSenhasnaoPioritariasLayout.createSequentialGroup()
+        pnlSenhasnaoPioritarias2Layout.setVerticalGroup(
+            pnlSenhasnaoPioritarias2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSenhasnaoPioritarias2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblSenhasnaoPioritarias, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addComponent(lblSenhasnaoPioritarias2, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlMenuAtendente.add(pnlSenhasnaoPioritarias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 250, 40));
+        pnlMenuAtendente.add(pnlSenhasnaoPioritarias2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 250, 40));
 
         pnlTotalPioridade.setBackground(new java.awt.Color(0, 153, 153));
         pnlTotalPioridade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -555,7 +559,7 @@ public class TeleAtendente extends javax.swing.JFrame {
 
         pnlMenuAtendente.add(pnlTotalPioridade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 250, 40));
 
-        tblDadosTotais.setModel(new javax.swing.table.DefaultTableModel(
+        tblDadosTotais1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -574,49 +578,38 @@ public class TeleAtendente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblDadosTotais.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tblDadosTotais1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tblDadosTotaisAncestorAdded(evt);
+                tblDadosTotais1AncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jScrollPane1.setViewportView(tblDadosTotais);
+        jScrollPane2.setViewportView(tblDadosTotais1);
 
-        pnlMenuAtendente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 270, 120));
+        pnlMenuAtendente.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 270, 120));
         pnlMenuAtendente.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 250, -1));
 
-        pnlTelaAtendente.add(pnlMenuAtendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 680));
+        btnSairtelaAtendente.setText("Sair");
+        pnlMenuAtendente.add(btnSairtelaAtendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 610, 140, 40));
 
-        lblConfiguraçõesAtendimento.setText("Configurações de Atendimento");
-        pnlTelaAtendente.add(lblConfiguraçõesAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, -1, -1));
-
-        lblTextoSuperior.setText("Módulo Recepção - Cadastro de Cliente para Atendimento");
-        pnlTelaAtendente.add(lblTextoSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+        pnlComponetes.add(pnlMenuAtendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTelaAtendente, javax.swing.GroupLayout.DEFAULT_SIZE, 1284, Short.MAX_VALUE)
+            .addComponent(pnlComponetes, javax.swing.GroupLayout.DEFAULT_SIZE, 1290, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTelaAtendente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlComponetes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnGerarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGerarSenhaActionPerformed
-
-    private void cbmGuicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmGuicheActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbmGuicheActionPerformed
 
     private void txtNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeUsuarioActionPerformed
         // TODO add your handling code here:
@@ -630,8 +623,20 @@ public class TeleAtendente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefoneUsuarioActionPerformed
 
-    private void tblDadosTotaisAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblDadosTotaisAncestorAdded
-        /*tblDadosTotais.setModel(new javax.swing.table.DefaultTableModel(
+    private void rbtAtendimentoNormaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAtendimentoNormaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtAtendimentoNormaActionPerformed
+
+    private void cbmGuicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmGuicheActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbmGuicheActionPerformed
+
+    private void btnGerarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGerarSenhaActionPerformed
+
+    private void tblDadosTotais1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblDadosTotais1AncestorAdded
+        tblDadosTotais1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Diário", "0"},
                 {"Semanal", "0"},
@@ -650,12 +655,7 @@ public class TeleAtendente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        */
-    }//GEN-LAST:event_tblDadosTotaisAncestorAdded
-
-    private void rbtAtendimentoNormaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAtendimentoNormaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbtAtendimentoNormaActionPerformed
+    }//GEN-LAST:event_tblDadosTotais1AncestorAdded
 
     /**
      * @param args the command line arguments
@@ -674,20 +674,21 @@ public class TeleAtendente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TeleAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAtendente1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TeleAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAtendente1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TeleAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAtendente1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TeleAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAtendente1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TeleAtendente().setVisible(true);
+                new TelaAtendente1().setVisible(true);
             }
         });
     }
@@ -696,15 +697,14 @@ public class TeleAtendente extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGerarSenha;
     private javax.swing.JButton btnGerarsenhaPioritaria;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton btnSairtelaAtendente;
     private javax.swing.JComboBox<String> cbmGuiche;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JLabel lblAtendimentosPioridade;
-    private javax.swing.JLabel lblAtendimentosTotal;
+    private javax.swing.JLabel lblAtendimentosPioridade1;
+    private javax.swing.JLabel lblAtendimentosTotal1;
     private javax.swing.JLabel lblBairro;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblConfiguraçõesAtendimento;
@@ -716,14 +716,15 @@ public class TeleAtendente extends javax.swing.JFrame {
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblNumerosAtendimentos;
     private javax.swing.JLabel lblOpcaoPioridade;
-    private javax.swing.JLabel lblPainelAtendente;
-    private javax.swing.JLabel lblSenhasNormais;
-    private javax.swing.JLabel lblSenhasnaoPioritarias;
+    private javax.swing.JLabel lblPainelAtendente1;
+    private javax.swing.JLabel lblSenhasNormais1;
+    private javax.swing.JLabel lblSenhasnaoPioritarias2;
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblTextoSuperior;
     private javax.swing.JLabel lblTotaldeAtendimentos;
     private javax.swing.JPanel pnlBairroUsuario;
     private javax.swing.JPanel pnlCidadeUsuario;
+    private javax.swing.JPanel pnlComponetes;
     private javax.swing.JPanel pnlCpfUsuario;
     private javax.swing.JPanel pnlDataNascimento;
     private javax.swing.JPanel pnlDescricao;
@@ -733,14 +734,13 @@ public class TeleAtendente extends javax.swing.JFrame {
     private javax.swing.JPanel pnlNomeUsuario;
     private javax.swing.JPanel pnlNumeroResidencia;
     private javax.swing.JPanel pnlOpcoesAtendimento;
-    private javax.swing.JPanel pnlSenhasnaoPioritarias;
-    private javax.swing.JPanel pnlTelaAtendente;
+    private javax.swing.JPanel pnlSenhasnaoPioritarias2;
     private javax.swing.JPanel pnlTelefone;
     private javax.swing.JPanel pnlTotalPioridade;
     private javax.swing.JPanel pnlTotaldeAtendimentos;
     private javax.swing.JRadioButton rbtAtendimentoNorma;
     private javax.swing.JRadioButton rbtAtendimentoPioritario;
-    private javax.swing.JTable tblDadosTotais;
+    private javax.swing.JTable tblDadosTotais1;
     private javax.swing.JTextField txtBairroUsuario;
     private javax.swing.JTextField txtCidadeUsuario;
     private javax.swing.JTextField txtCpfUsuario;

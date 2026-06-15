@@ -1,27 +1,32 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
- 
 package br.com.ifba.projetogerenciadorsenhas.view;
 
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+import br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository;
+import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
 
 public class TelaAdministrador extends javax.swing.JFrame {
 
     private final ClienteRepository clienteRepository;
     private final PerfilRepository perfilRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final UsuarioService usuarioService;
 
-    public TelaAdministrador(ClienteRepository clienteRepository, PerfilRepository perfilRepository) {
-        this.clienteRepository = clienteRepository;
-        this.perfilRepository = perfilRepository;
-        initComponents();
-        setLocationRelativeTo(null);
-    }
+    public TelaAdministrador(ClienteRepository clienteRepository,PerfilRepository perfilRepository,UsuarioRepository usuarioRepository,UsuarioService usuarioService) {
 
-    private TelaAdministrador() {
-        this(null, null);
+    this.clienteRepository = clienteRepository;
+    this.perfilRepository = perfilRepository;
+    this.usuarioRepository = usuarioRepository;
+    this.usuarioService = usuarioService;
+
+    initComponents();
+    setLocationRelativeTo(null);
+}
+
+    private TelaAdministrador(){
+        this(null, null, null, null);
+        UsuarioService usuarioService1 = this.usuarioService;
     }
     
     @SuppressWarnings("unchecked")
@@ -212,13 +217,14 @@ public class TelaAdministrador extends javax.swing.JFrame {
         pack();
     }
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {
-        new TelaLogin(clienteRepository, perfilRepository).setVisible(true);
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt){
+       
+        new TelaLogin(clienteRepository, perfilRepository,usuarioRepository,usuarioService).setVisible(true);
         this.dispose();
     }
 
     private void btnCadastraAtendentesActionPerformed(java.awt.event.ActionEvent evt) {
-        CadastroAtendente painelCadastro = new CadastroAtendente(clienteRepository, perfilRepository);
+        CadastroAtendente painelCadastro = new CadastroAtendente(clienteRepository, perfilRepository, usuarioRepository);
         
         javax.swing.JDialog janelaModal = new javax.swing.JDialog(this, "Módulo de Cadastro", true);
         janelaModal.getContentPane().add(painelCadastro);
@@ -247,3 +253,4 @@ public class TelaAdministrador extends javax.swing.JFrame {
     private javax.swing.JSeparator spdPaineladministrador;
     private javax.swing.JTextField txtPesquisa;
 }
+*/
