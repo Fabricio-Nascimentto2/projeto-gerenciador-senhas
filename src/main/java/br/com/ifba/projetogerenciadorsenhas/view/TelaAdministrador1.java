@@ -290,14 +290,10 @@ public class TelaAdministrador1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCadastraAtendentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraAtendentesActionPerformed
-        // TODO add your handling code here:
-        CadastroAtendente painelCadastro = new CadastroAtendente(clienteRepository, perfilRepository, usuarioRepository);
-        
-        javax.swing.JDialog janelaModal = new javax.swing.JDialog(this, "Módulo de Cadastro", true);
-        janelaModal.getContentPane().add(painelCadastro);
-        janelaModal.pack();
-        janelaModal.setLocationRelativeTo(this); 
-        janelaModal.setVisible(true);
+        CadastroAtendente1 janelaCadastro = new CadastroAtendente1(clienteRepository, perfilRepository, usuarioRepository);
+        janelaCadastro.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE); // Fecha só essa janela ao sair
+        janelaCadastro.setLocationRelativeTo(this);
+        janelaCadastro.setVisible(true);
     }//GEN-LAST:event_btnCadastraAtendentesActionPerformed
 
     private void btnExcluirAtendentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirAtendentesActionPerformed

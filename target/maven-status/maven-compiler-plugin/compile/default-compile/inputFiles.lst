@@ -1,4 +1,3 @@
-/home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/view/TeleAtendente.java
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/service/ClienteService.java
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/domain/Perfil.java
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/view/TelaAtendente1.java
@@ -13,8 +12,7 @@
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/view/TelaguicheFinaceiro.java
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/domain/Usuario.java
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/repository/ClienteRepository.java
-/home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/view/TelaAdministrador.java
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/repository/UsuarioRepository.java
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/ProjetoGerenciadorSenhas.java
-/home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/view/CadastroAtendente.java
 /home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/view/PainelChamanda.java
+/home/fabricio/NetBeansProject/pgr03FabricioNascimentto/ProjetoGerenciadorSenhas/src/main/java/br/com/ifba/projetogerenciadorsenhas/view/CadastroAtendente1.java

@@ -33,56 +33,6 @@ import javax.swing.JOptionPane;
             initComponents();
             setLocationRelativeTo(null);
         }
-    // ...
-/*public class TelaLogin extends javax.swing.JFrame {
-
-    private final ClienteRepository clienteRepository;
-    private final PerfilRepository perfilRepository;
-    private final UsuarioRepository usuarioRepository;
-    private final UsuarioService usuarioService;
-    /**
-     * Creates new form TelaLong
-     */
-    /*public TelaLogin(ClienteRepository clienteRepository,PerfilRepository perfilRepository,UsuarioRepository usuarioRepository,UsuarioService usuarioService){
-        this.clienteRepository = clienteRepository;
-        this.perfilRepository = perfilRepository;
-        this.usuarioRepository = usuarioRepository;
-        this.usuarioService = usuarioService;
-
-        initComponents();
-        setLocationRelativeTo(null);
-    /*}
-
-    /*private void realizarLogin() {
-        String login = txtNomeUsuario.getText().trim();
-        String senha = new String(pwdSenha.getPassword());
-
-        try {
-
-            Usuario usuario = usuarioService.logar(login, senha);
-
-            JOptionPane.showMessageDialog(this,"Bem-vindo, " + usuario.getLogin() + "!");
-
-            String perfil = usuario.getPerfil().getNome();
-
-            if (perfil.equalsIgnoreCase("ADMINISTRADOR")){
-                new TelaAdministrador(clienteRepository,perfilRepository,usuarioRepository,usuarioService).setVisible(true);
-
-            }else if (perfil.equalsIgnoreCase("ATENDENTE")){
-                new TelaAtendente(clienteRepository,perfilRepository).setVisible(true);
-            }
-
-            this.dispose();
-
-        } catch (RuntimeException ex) {
-
-            JOptionPane.showMessageDialog(
-                this,
-                ex.getMessage()
-            );
-        }
-   /* }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
