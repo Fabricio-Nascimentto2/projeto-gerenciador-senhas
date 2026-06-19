@@ -6,6 +6,7 @@ package br.com.ifba.projetogerenciadorsenhas.view;
 
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
 
 /**
  *
@@ -18,6 +19,7 @@ public class TelaAtendente1 extends javax.swing.JFrame {
 
     /**
      * Creates new form TeleAtendente
+     * @param clienteRepository
      */
     public TelaAtendente1(ClienteRepository clienteRepository, PerfilRepository perfilRepository) {
         this.clienteRepository = clienteRepository;
@@ -593,6 +595,11 @@ public class TelaAtendente1 extends javax.swing.JFrame {
         pnlMenuAtendente.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 250, -1));
 
         btnSairtelaAtendente.setText("Sair");
+        btnSairtelaAtendente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairtelaAtendenteActionPerformed(evt);
+            }
+        });
         pnlMenuAtendente.add(btnSairtelaAtendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 610, 140, 40));
 
         pnlComponetes.add(pnlMenuAtendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 690));
@@ -656,6 +663,11 @@ public class TelaAtendente1 extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_tblDadosTotais1AncestorAdded
+
+    private void btnSairtelaAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairtelaAtendenteActionPerformed
+        //new TelaLogin(clienteRepository, perfilRepository,usuarioRepository,usuarioService).setVisible(true);
+       // this.dispose();
+    }//GEN-LAST:event_btnSairtelaAtendenteActionPerformed
 
     /**
      * @param args the command line arguments

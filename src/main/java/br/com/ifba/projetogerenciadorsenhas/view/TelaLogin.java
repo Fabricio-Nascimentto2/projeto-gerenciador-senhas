@@ -33,6 +33,10 @@ import javax.swing.JOptionPane;
             initComponents();
             setLocationRelativeTo(null);
         }
+
+    TelaLogin(ClienteRepository clienteRepository, PerfilRepository perfilRepository) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,26 +48,34 @@ import javax.swing.JOptionPane;
         String senha = new String(pwdSenha.getPassword());
 
         try {
+            // 1. Tenta realizar o login via service
             Usuario usuario = usuarioService.logar(login, senha);
+            System.out.println("=================================");
+            System.out.println("Login digitado: " + login);
+            System.out.println("Usuario retornado: " + usuario.getLogin());
+            System.out.println("Perfil retornado: " + usuario.getPerfil().getNome());
+            System.out.println("=================================");
 
             if (usuario != null) {
-                JOptionPane.showMessageDialog(this, "Bem-vindo, " + usuario.getLogin() + "!");
-                String perfil = usuario.getPerfil().getNome();
+            String nomePerfil = usuario.getPerfil().getNome().toUpperCase().trim();
 
-                if (perfil.equalsIgnoreCase("ADMINISTRADOR")) {
-                    new TelaAdministrador1(clienteRepository, perfilRepository, usuarioRepository, usuarioService).setVisible(true);
-                } else {
-                    new TelaAtendente1(clienteRepository, perfilRepository).setVisible(true);
-                }
+            if (nomePerfil.contains("ADMINISTRADOR")) {
+                new TelaAdministrador1(clienteRepository, perfilRepository, usuarioRepository, usuarioService).setVisible(true);
+            } else if (nomePerfil.contains("ATENDENTE")) {
+                new TelaAtendente1(clienteRepository, perfilRepository).setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Perfil não reconhecido: " + nomePerfil);
+            }
                 this.dispose();
+
             } else {
                 JOptionPane.showMessageDialog(this, "Usuário ou senha incorretos!");
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Erro no login: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro ao tentar realizar login: " + ex.getMessage());
+            ex.printStackTrace(); 
         }
-    }
-        
+    }   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

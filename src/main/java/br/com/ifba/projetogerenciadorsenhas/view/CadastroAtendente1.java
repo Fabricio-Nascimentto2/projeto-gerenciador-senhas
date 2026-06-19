@@ -189,8 +189,52 @@ public class CadastroAtendente1 extends javax.swing.JFrame {
     }//GEN-LAST:event_cbmGuicheActionPerformed
 
     private void btnSavarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavarActionPerformed
+        
+    // 1. Captura correta dos dados da tela
+    String nomeStr = txtNome.getText() != null ? txtNome.getText().trim() : "";
+    String usuarioLogin = txtUsuario.getText() != null ? txtUsuario.getText().trim() : ""; 
+    String senhaStr = txtSenha.getText() != null ? txtSenha.getText().trim() : "";
+    
+    // 2. Captura do Perfil (garantindo que seja tratado como String)
+    Object itemSelecionado = cmbPerfil.getSelectedItem();
+    if (itemSelecionado == null || nomeStr.isEmpty() || usuarioLogin.isEmpty() || senhaStr.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+        return;
+    }
+    
+    String perfilSelecionado = itemSelecionado.toString();
 
     try {
+        // 3. Extrai o ID do perfil corretamente
+        String[] partes = perfilSelecionado.split(" - ");
+        Long idPerfil = Long.parseLong(partes[0].trim()); 
+
+        // 4. Busca o perfil no banco pelo ID
+        Optional<Perfil> perfilOptional = perfilRepository.findById(idPerfil);
+
+        if (perfilOptional.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro: Perfil com ID " + idPerfil + " não encontrado!");
+            return;
+        }
+
+        // 5. Criar e salvar o objeto Usuario
+        Usuario novoUsuario = new Usuario();
+        novoUsuario.setLogin(usuarioLogin); 
+        novoUsuario.setSenha(senhaStr); 
+        novoUsuario.setPerfil(perfilOptional.get());
+
+        usuarioRepository.save(novoUsuario);
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Atendente cadastrado com sucesso!");
+        this.dispose(); 
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Erro ao processar o ID do perfil: " + e.getMessage());
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar: " + e.getMessage());
+    }
+
+    /*try {
 
         // Recupera o item selecionado do ComboBox
         String perfilSelecionado = cmbPerfil.getSelectedItem().toString();
@@ -261,6 +305,7 @@ public class CadastroAtendente1 extends javax.swing.JFrame {
         e.printStackTrace();
 
     }
+*/
 
 
     }//GEN-LAST:event_btnSavarActionPerformed
