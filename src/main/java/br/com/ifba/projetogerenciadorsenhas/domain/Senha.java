@@ -4,6 +4,10 @@
  */
 package br.com.ifba.projetogerenciadorsenhas.domain;
 
+/**
+ *
+ * @author fabricio
+ */
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -41,4 +45,5 @@ public class Senha {
         this.dataEmissao = LocalDateTime.now();
         this.status = "AGUARDANDO"; 
     }
+
 }

@@ -16,9 +16,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
+        <lombok.version>1.18.38</lombok.version>
         <start-class>br.com.ifba.projetogerenciadorsenhas.ProjetoGerenciadorSenhas</start-class>
         <exec.mainClass>br.com.ifba.projetogerenciadorsenhas.ProjetoGerenciadorSenhas</exec.mainClass>
-    </properties>
+    </properties> 
     <dependencies>
         <dependency>
             <groupId>org.netbeans.external</groupId>
@@ -49,15 +50,13 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.3</version>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
-            <scope>provided</scope>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.38</version>
+    <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>

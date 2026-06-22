@@ -2,3 +2,9 @@ target/
 .project
 .classpath
 .settings/
+/target/
+.nbattrs
+nbproject/
+.settings/
+.classpath
+.project

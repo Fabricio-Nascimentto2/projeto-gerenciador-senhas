@@ -7,9 +7,9 @@ package br.com.ifba.projetogerenciadorsenhas.view;
 import br.com.ifba.projetogerenciadorsenhas.domain.Usuario;
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository;
 import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
-import br.com.ifba.projetogerenciadorsenhas.view.TelaAdministrador1;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,13 +21,15 @@ import javax.swing.JOptionPane;
         private final PerfilRepository perfilRepository;
         private final UsuarioRepository usuarioRepository;
         private final UsuarioService usuarioService;
+        private final SenhaRepository senhaRepository;
 
 
-        public TelaLogin(ClienteRepository clienteRepository, PerfilRepository perfilRepository, UsuarioRepository usuarioRepository, UsuarioService usuarioService) {
+        public TelaLogin(ClienteRepository clienteRepository, PerfilRepository perfilRepository, UsuarioRepository usuarioRepository, UsuarioService usuarioService, SenhaRepository senhaRepository) {
             this.clienteRepository = clienteRepository;
             this.perfilRepository = perfilRepository;
             this.usuarioRepository = usuarioRepository;
             this.usuarioService = usuarioService;
+            this.senhaRepository = senhaRepository;
             initComponents();
             setLocationRelativeTo(null);
         }
@@ -43,7 +45,6 @@ import javax.swing.JOptionPane;
             String senha = new String(pwdSenha.getPassword());
 
             try {
-                // 1. Tenta realizar o login via service
                 Usuario usuario = usuarioService.logar(login, senha);
                 System.out.println("usuarioService = " + usuarioService);
                 System.out.println("=================================");
@@ -60,8 +61,8 @@ import javax.swing.JOptionPane;
                         new TelaAdministrador1(clienteRepository, perfilRepository, usuarioRepository, usuarioService).setVisible(true);
 
                     }else if(nomePerfil.contains("ATENDENTE")){
-
-                        new TelaAtendente1(clienteRepository, perfilRepository, usuarioService).setVisible(true);
+                        SenhaRepository senhaRepository = null;
+                        new TelaAtendente1(clienteRepository, perfilRepository, usuarioService, senhaRepository).setVisible(true);
                     }else{
                         JOptionPane.showMessageDialog(this, "Perfil não reconhecido: " + nomePerfil);
                     }

@@ -6,6 +6,7 @@ package br.com.ifba.projetogerenciadorsenhas.view;
 
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository;
 import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
 
@@ -284,14 +285,15 @@ public class TelaAdministrador1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSenhasActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        SenhaRepository senhaRepository = null;
         // TODO add your handling code here:
-        new TelaLogin(clienteRepository, perfilRepository,usuarioRepository,usuarioService).setVisible(true);
+        new TelaLogin(clienteRepository, perfilRepository, usuarioRepository, usuarioService, senhaRepository).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCadastraAtendentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraAtendentesActionPerformed
         CadastroAtendente1 janelaCadastro = new CadastroAtendente1(clienteRepository, perfilRepository, usuarioRepository);
-        janelaCadastro.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE); // Fecha só essa janela ao sair
+        janelaCadastro.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         janelaCadastro.setLocationRelativeTo(this);
         janelaCadastro.setVisible(true);
     }//GEN-LAST:event_btnCadastraAtendentesActionPerformed

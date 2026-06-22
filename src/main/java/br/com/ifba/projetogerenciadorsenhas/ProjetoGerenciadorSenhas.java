@@ -6,6 +6,7 @@ package br.com.ifba.projetogerenciadorsenhas;
 
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
+import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository;
 import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
 import br.com.ifba.projetogerenciadorsenhas.view.TelaLogin;
@@ -21,17 +22,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class ProjetoGerenciadorSenhas {
 
     public static void main(String[] args) {
-
         ConfigurableApplicationContext context = new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class).headless(false).run(args);
 
         ClienteRepository clienteRepository = context.getBean(ClienteRepository.class);
-
         PerfilRepository perfilRepository = context.getBean(PerfilRepository.class);
-
         UsuarioRepository usuarioRepository = context.getBean(UsuarioRepository.class);
-
         UsuarioService usuarioService = context.getBean(UsuarioService.class);
+        SenhaRepository senhaRepository = context.getBean(SenhaRepository.class);
 
-            java.awt.EventQueue.invokeLater(() -> { new TelaLogin(clienteRepository, perfilRepository, usuarioRepository, usuarioService).setVisible(true); });
-        }
+        java.awt.EventQueue.invokeLater(() -> {new TelaLogin(clienteRepository,perfilRepository,usuarioRepository,usuarioService,senhaRepository).setVisible(true);});
+    }
 }

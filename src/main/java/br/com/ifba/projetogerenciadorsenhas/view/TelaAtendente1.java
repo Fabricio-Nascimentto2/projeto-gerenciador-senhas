@@ -10,6 +10,8 @@ import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 import br.com.ifba.projetogerenciadorsenhas.domain.Cliente;
+import br.com.ifba.projetogerenciadorsenhas.domain.Senha;
+import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
 
 /**
  *
@@ -20,20 +22,22 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     private final ClienteRepository clienteRepository;
     private final PerfilRepository perfilRepository;
     private final UsuarioService usuarioService;
+    private final SenhaRepository senhaRepository;
 
     /**
      * Creates new form TeleAtendente
      * @param clienteRepository
      */
-    public TelaAtendente1(ClienteRepository clienteRepository, PerfilRepository perfilRepository, br.com.ifba.projetogerenciadorsenhas.service.UsuarioService usuarioService) {
+    public TelaAtendente1(ClienteRepository clienteRepository, PerfilRepository perfilRepository, UsuarioService usuarioService, SenhaRepository senhaRepository){
         this.clienteRepository = clienteRepository;
         this.perfilRepository = perfilRepository;
         this.usuarioService = usuarioService;
+        this.senhaRepository = senhaRepository;
         initComponents();
         atualizarTabela();
         setLocationRelativeTo(null);
     }
-    
+
     private void atualizarTabela() {
         List<Cliente> clientes = clienteRepository.findAll();
 
@@ -652,7 +656,16 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     }//GEN-LAST:event_cbmGuicheActionPerformed
 
     private void btnGerarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarSenhaActionPerformed
-        // TODO add your handling code here:
+
+        Senha novaSenha = new Senha();
+        novaSenha.setTipo(rbtAtendimentoPioritario.isSelected() ? "PRIORITARIO" : "NORMAL");
+        novaSenha.setGuicheResponsavel(cbmGuiche.getSelectedItem().toString());
+        String prefixo = novaSenha.getTipo().equals("PRIORITARIO") ? "P" : "N";
+        novaSenha.setCodigo(prefixo + (int)(Math.random() * 999)); 
+        senhaRepository.save(novaSenha);
+        
+        javax.swing.JOptionPane.showMessageDialog(this, "Senha gerada com sucesso: " + novaSenha.getCodigo());
+
     }//GEN-LAST:event_btnGerarSenhaActionPerformed
 
     private void tblDadosTotais1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblDadosTotais1AncestorAdded
