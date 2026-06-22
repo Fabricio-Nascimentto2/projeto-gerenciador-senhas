@@ -7,6 +7,9 @@ package br.com.ifba.projetogerenciadorsenhas.view;
 import br.com.ifba.projetogerenciadorsenhas.repository.ClienteRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
 import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
+import br.com.ifba.projetogerenciadorsenhas.domain.Cliente;
 
 /**
  *
@@ -27,7 +30,19 @@ public class TelaAtendente1 extends javax.swing.JFrame {
         this.perfilRepository = perfilRepository;
         this.usuarioService = usuarioService;
         initComponents();
+        atualizarTabela();
         setLocationRelativeTo(null);
+    }
+    
+    private void atualizarTabela() {
+        List<Cliente> clientes = clienteRepository.findAll();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblDadosTotais1.getModel();
+
+        modelo.setRowCount(0);
+            for(Cliente c : clientes){
+            modelo.addRow(new Object[]{c.getNome(), c.getCpf(), c.getTelefone()});
+        }
     }
 
     /**

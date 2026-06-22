@@ -20,7 +20,7 @@ public class CadastroAtendente1 extends javax.swing.JFrame {
 
     private final ClienteRepository clienteRepository;
     private final PerfilRepository perfilRepository;
-    private final UsuarioRepository usuarioRepository; // Adicionado UsuarioRepository
+    private final UsuarioRepository usuarioRepository;
     private Object perfilSelecionado;
 
     public CadastroAtendente1(ClienteRepository clienteRepository, PerfilRepository perfilRepository, UsuarioRepository usuarioRepository) {
@@ -189,125 +189,44 @@ public class CadastroAtendente1 extends javax.swing.JFrame {
     }//GEN-LAST:event_cbmGuicheActionPerformed
 
     private void btnSavarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavarActionPerformed
-        
-    // 1. Captura correta dos dados da tela
-    String nomeStr = txtNome.getText() != null ? txtNome.getText().trim() : "";
-    String usuarioLogin = txtUsuario.getText() != null ? txtUsuario.getText().trim() : ""; 
-    String senhaStr = txtSenha.getText() != null ? txtSenha.getText().trim() : "";
-    
-    // 2. Captura do Perfil (garantindo que seja tratado como String)
-    Object itemSelecionado = cmbPerfil.getSelectedItem();
-    if (itemSelecionado == null || nomeStr.isEmpty() || usuarioLogin.isEmpty() || senhaStr.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
-        return;
-    }
-    
-    String perfilSelecionado = itemSelecionado.toString();
+        String nomeStr = txtNome.getText() != null ? txtNome.getText().trim() : "";
+        String usuarioLogin = txtUsuario.getText() != null ? txtUsuario.getText().trim() : ""; 
+        String senhaStr = txtSenha.getText() != null ? txtSenha.getText().trim() : "";
 
-    try {
-        // 3. Extrai o ID do perfil corretamente
-        String[] partes = perfilSelecionado.split(" - ");
-        Long idPerfil = Long.parseLong(partes[0].trim()); 
-
-        // 4. Busca o perfil no banco pelo ID
-        Optional<Perfil> perfilOptional = perfilRepository.findById(idPerfil);
-
-        if (perfilOptional.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Erro: Perfil com ID " + idPerfil + " não encontrado!");
+        Object itemSelecionado = cmbPerfil.getSelectedItem();
+        if(itemSelecionado == null || nomeStr.isEmpty() || usuarioLogin.isEmpty() || senhaStr.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
             return;
         }
 
-        // 5. Criar e salvar o objeto Usuario
-        Usuario novoUsuario = new Usuario();
-        novoUsuario.setLogin(usuarioLogin); 
-        novoUsuario.setSenha(senhaStr); 
-        novoUsuario.setPerfil(perfilOptional.get());
+        String perfilSelecionado = itemSelecionado.toString();
 
-        usuarioRepository.save(novoUsuario);
+        try{
+            String[] partes = perfilSelecionado.split(" - ");
+            Long idPerfil = Long.parseLong(partes[0].trim()); 
 
-        javax.swing.JOptionPane.showMessageDialog(this, "Atendente cadastrado com sucesso!");
-        this.dispose(); 
+            Optional<Perfil> perfilOptional = perfilRepository.findById(idPerfil);
 
-    } catch (NumberFormatException e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Erro ao processar o ID do perfil: " + e.getMessage());
-    } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar: " + e.getMessage());
-    }
+            if(perfilOptional.isEmpty()){
+                javax.swing.JOptionPane.showMessageDialog(this, "Erro: Perfil com ID " + idPerfil + " não encontrado!");
+                return;
+            }
 
-    /*try {
+            Usuario novoUsuario = new Usuario();
+            novoUsuario.setLogin(usuarioLogin); 
+            novoUsuario.setSenha(senhaStr); 
+            novoUsuario.setPerfil(perfilOptional.get());
 
-        // Recupera o item selecionado do ComboBox
-        String perfilSelecionado = cmbPerfil.getSelectedItem().toString();
+            usuarioRepository.save(novoUsuario);
 
-        // Extrai o ID do perfil
-        String[] partes = perfilSelecionado.split(" - ");
-        Long idPerfil = Long.parseLong(partes[0].trim());
+            javax.swing.JOptionPane.showMessageDialog(this, "Atendente cadastrado com sucesso!");
+            this.dispose(); 
 
-        // Busca o perfil no banco
-        Optional<Perfil> perfilOptional = perfilRepository.findById(idPerfil);
-
-        if (perfilOptional.isEmpty()) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Perfil não encontrado!"
-            );
-            return;
+        }catch(NumberFormatException e){
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao processar o ID do perfil: " + e.getMessage());
+        }catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar: " + e.getMessage());
         }
-
-        // Recupera os dados da tela
-        String usuarioLogin = txtUsuario.getText().trim();
-        String senhaStr = txtSenha.getText().trim();
-
-        // Validações
-        if (usuarioLogin.isEmpty() || senhaStr.isEmpty()) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Usuário e senha são obrigatórios!"
-            );
-            return;
-        }
-
-        // Cria o usuário
-        Usuario novoUsuario = new Usuario();
-        novoUsuario.setLogin(usuarioLogin);
-        novoUsuario.setSenha(senhaStr);
-        novoUsuario.setPerfil(perfilOptional.get());
-
-        // Salva
-        usuarioRepository.save(novoUsuario);
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Atendente cadastrado com sucesso!"
-        );
-
-        // Fecha a janela
-        java.awt.Window janela =
-                javax.swing.SwingUtilities.getWindowAncestor(this);
-
-        if (janela != null) {
-            janela.dispose();
-        }
-
-    } catch (NumberFormatException e) {
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Erro ao converter o ID do perfil."
-        );
-
-    } catch (Exception e) {
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Erro ao salvar: " + e.getMessage()
-        );
-        e.printStackTrace();
-
-    }
-*/
-
-
     }//GEN-LAST:event_btnSavarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
