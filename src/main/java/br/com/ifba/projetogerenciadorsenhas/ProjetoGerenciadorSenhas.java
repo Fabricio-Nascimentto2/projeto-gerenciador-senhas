@@ -22,30 +22,16 @@ public class ProjetoGerenciadorSenhas {
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context =
-                new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class)
-                        .headless(false)
-                        .run(args);
+        ConfigurableApplicationContext context = new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class).headless(false).run(args);
 
-        ClienteRepository clienteRepository =
-        context.getBean(ClienteRepository.class);
+        ClienteRepository clienteRepository = context.getBean(ClienteRepository.class);
 
-PerfilRepository perfilRepository =
-        context.getBean(PerfilRepository.class);
+        PerfilRepository perfilRepository = context.getBean(PerfilRepository.class);
 
-UsuarioRepository usuarioRepository =
-        context.getBean(UsuarioRepository.class);
+        UsuarioRepository usuarioRepository = context.getBean(UsuarioRepository.class);
 
-UsuarioService usuarioService =
-        context.getBean(UsuarioService.class);
+        UsuarioService usuarioService = context.getBean(UsuarioService.class);
 
-        java.awt.EventQueue.invokeLater(() -> {
-    new TelaLogin(
-            clienteRepository,
-            perfilRepository,
-            usuarioRepository,
-            usuarioService
-    ).setVisible(true);
-});
-    }
+            java.awt.EventQueue.invokeLater(() -> { new TelaLogin(clienteRepository, perfilRepository, usuarioRepository, usuarioService).setVisible(true); });
+        }
 }

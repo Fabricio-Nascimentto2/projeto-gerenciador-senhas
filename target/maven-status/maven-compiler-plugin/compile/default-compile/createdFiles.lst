@@ -8,6 +8,7 @@ br/com/ifba/projetogerenciadorsenhas/view/TelaLogin.class
 br/com/ifba/projetogerenciadorsenhas/view/ExcluirAtendente.class
 br/com/ifba/projetogerenciadorsenhas/view/CadastroAtendente1$1.class
 br/com/ifba/projetogerenciadorsenhas/view/TelaAtendente1$4.class
+br/com/ifba/projetogerenciadorsenhas/view/TelaAtendente1$11.class
 br/com/ifba/projetogerenciadorsenhas/domain/Perfil.class
 br/com/ifba/projetogerenciadorsenhas/view/TelaAdministrador1$8.class
 br/com/ifba/projetogerenciadorsenhas/view/TelaguicheFinaceiro$5.class

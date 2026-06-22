@@ -67,4 +67,8 @@ public class Usuario {
         this.perfil = perfil;
     }
 
+    public Long getId() {
+        return id;
+    }
+
 }

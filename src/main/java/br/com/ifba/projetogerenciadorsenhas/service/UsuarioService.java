@@ -19,16 +19,15 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario logar(String login, String senha) {
+    public Usuario logar(String login, String senha){
+        
 
-    Usuario usuario = usuarioRepository
-            .findByLogin(login)
-            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        Usuario usuario = usuarioRepository.findByLogin(login).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-    if (!usuario.getSenha().equals(senha)) {
-        throw new RuntimeException("Senha inválida");
+        if(!usuario.getSenha().equals(senha)){
+            throw new RuntimeException("Senha invalida");
+        }
+
+        return usuario;
     }
-
-    return usuario;
-}
 }

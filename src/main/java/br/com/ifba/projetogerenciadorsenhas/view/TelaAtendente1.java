@@ -16,20 +16,18 @@ public class TelaAtendente1 extends javax.swing.JFrame {
 
     private final ClienteRepository clienteRepository;
     private final PerfilRepository perfilRepository;
+    private final UsuarioService usuarioService;
 
     /**
      * Creates new form TeleAtendente
      * @param clienteRepository
      */
-    public TelaAtendente1(ClienteRepository clienteRepository, PerfilRepository perfilRepository) {
+    public TelaAtendente1(ClienteRepository clienteRepository, PerfilRepository perfilRepository, br.com.ifba.projetogerenciadorsenhas.service.UsuarioService usuarioService) {
         this.clienteRepository = clienteRepository;
         this.perfilRepository = perfilRepository;
+        this.usuarioService = usuarioService;
         initComponents();
         setLocationRelativeTo(null);
-    }
-
-    public TelaAtendente1() {
-        this(null, null);
     }
 
     /**
@@ -665,8 +663,7 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     }//GEN-LAST:event_tblDadosTotais1AncestorAdded
 
     private void btnSairtelaAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairtelaAtendenteActionPerformed
-        //new TelaLogin(clienteRepository, perfilRepository,usuarioRepository,usuarioService).setVisible(true);
-       // this.dispose();
+       
     }//GEN-LAST:event_btnSairtelaAtendenteActionPerformed
 
     /**
@@ -700,7 +697,7 @@ public class TelaAtendente1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAtendente1().setVisible(true);
+                
             }
         });
     }
