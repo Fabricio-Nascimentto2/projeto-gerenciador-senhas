@@ -669,21 +669,29 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     }//GEN-LAST:event_cbmGuicheActionPerformed
 
     private void btnGerarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarSenhaActionPerformed
-        if (senhaRepository == null) {
-            JOptionPane.showMessageDialog(this, "Erro: Repositório de senhas não inicializado!");
+        
+        int linhaSelecionada = tblDadosTotais1.getSelectedRow();
+
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um cliente na tabela!");
             return;
         }
+
+        String cpfSelecionado = tblDadosTotais1.getValueAt(linhaSelecionada, 1).toString();
+
+        Cliente cliente = clienteRepository.findByCpf(cpfSelecionado);
 
         Senha novaSenha = new Senha();
         novaSenha.setTipo(rbtAtendimentoPioritario.isSelected() ? "PRIORITARIO" : "NORMAL");
         novaSenha.setGuicheResponsavel(cbmGuiche.getSelectedItem().toString());
+        novaSenha.setCliente(cliente);
 
         String prefixo = novaSenha.getTipo().equals("PRIORITARIO") ? "P" : "N";
         novaSenha.setCodigo(prefixo + (int)(Math.random() * 999));
 
         senhaRepository.save(novaSenha);
+        JOptionPane.showMessageDialog(this, "Senha " + novaSenha.getCodigo() + " vinculada ao cliente " + cliente.getNome());
 
-        JOptionPane.showMessageDialog(this, "Senha " + novaSenha.getCodigo() + " gerada com sucesso!");
 
     }//GEN-LAST:event_btnGerarSenhaActionPerformed
 

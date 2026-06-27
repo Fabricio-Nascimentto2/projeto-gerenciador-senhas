@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
  *
  * @author fabricio
  */
-
 @Entity
 @Table(name = "senhas_atendimento")
 public class Senha {
@@ -38,11 +37,22 @@ public class Senha {
 
     @Column(length = 100)
     private String guicheResponsavel;
+    
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     @PrePersist
     protected void onCreate() {
         this.dataEmissao = LocalDateTime.now();
         this.status = "AGUARDANDO"; 
+    }
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Long getId() {
@@ -100,7 +110,5 @@ public class Senha {
     public void setGuicheResponsavel(String guicheResponsavel) {
         this.guicheResponsavel = guicheResponsavel;
     }
-
-    
     
 }
