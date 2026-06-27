@@ -19,13 +19,12 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "senhas_atendimento")
-@Data
 public class Senha {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 20)
     private String codigo; 
 
     @Column(nullable = false)
@@ -37,7 +36,7 @@ public class Senha {
     private LocalDateTime dataEmissao;
     private LocalDateTime dataAtendimento;
 
-    @Column(length = 10)
+    @Column(length = 100)
     private String guicheResponsavel;
 
     @PrePersist
@@ -46,4 +45,62 @@ public class Senha {
         this.status = "AGUARDANDO"; 
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(LocalDateTime dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public LocalDateTime getDataAtendimento() {
+        return dataAtendimento;
+    }
+
+    public void setDataAtendimento(LocalDateTime dataAtendimento) {
+        this.dataAtendimento = dataAtendimento;
+    }
+
+    public String getGuicheResponsavel() {
+        return guicheResponsavel;
+    }
+
+    public void setGuicheResponsavel(String guicheResponsavel) {
+        this.guicheResponsavel = guicheResponsavel;
+    }
+
+    
+    
 }

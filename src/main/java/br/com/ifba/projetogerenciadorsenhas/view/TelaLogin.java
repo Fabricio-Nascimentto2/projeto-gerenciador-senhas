@@ -60,15 +60,15 @@ import javax.swing.JOptionPane;
                     if (nomePerfil.contains("ADMINISTRADOR")){
                         new TelaAdministrador1(clienteRepository, perfilRepository, usuarioRepository, usuarioService).setVisible(true);
 
-                    }else if(nomePerfil.contains("ATENDENTE")){
-                        SenhaRepository senhaRepository = null;
-                        new TelaAtendente1(clienteRepository, perfilRepository, usuarioService, senhaRepository).setVisible(true);
+                    } else if (nomePerfil.contains("ATENDENTE")) {
+                        new TelaAtendente1(clienteRepository, perfilRepository, usuarioService, this.senhaRepository).setVisible(true);
+
                     }else{
                         JOptionPane.showMessageDialog(this, "Perfil não reconhecido: " + nomePerfil);
                     }
                         this.dispose();
                     }else{
-                    JOptionPane.showMessageDialog(this, "Usuário ou senha incorretos!");
+                        JOptionPane.showMessageDialog(this, "Usuário ou senha incorretos!");
                 }
             }catch(Exception ex){
                 JOptionPane.showMessageDialog(this, "Erro ao tentar realizar login: " + ex.getMessage());

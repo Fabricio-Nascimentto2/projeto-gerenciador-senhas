@@ -12,6 +12,8 @@ import java.util.List;
 import br.com.ifba.projetogerenciadorsenhas.domain.Cliente;
 import br.com.ifba.projetogerenciadorsenhas.domain.Senha;
 import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
+import javax.swing.JOptionPane;
+import com.toedter.calendar.JDateChooser;
 
 /**
  *
@@ -23,6 +25,8 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     private final PerfilRepository perfilRepository;
     private final UsuarioService usuarioService;
     private final SenhaRepository senhaRepository;
+    private JDateChooser dataChooser;
+    private com.toedter.calendar.JDateChooser dateNascimento;
 
     /**
      * Creates new form TeleAtendente
@@ -34,6 +38,9 @@ public class TelaAtendente1 extends javax.swing.JFrame {
         this.usuarioService = usuarioService;
         this.senhaRepository = senhaRepository;
         initComponents();
+        dateNascimento = new com.toedter.calendar.JDateChooser();
+        dateNascimento.setBounds(10, 50, 150, 30);
+        pnlInformaçõesUsuario.add(dateNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 330, 40));
         atualizarTabela();
         setLocationRelativeTo(null);
     }
@@ -94,7 +101,6 @@ public class TelaAtendente1 extends javax.swing.JFrame {
         lblOpcaoPioridade = new javax.swing.JLabel();
         pnlOpcoesAtendimento = new javax.swing.JPanel();
         cbmGuiche = new javax.swing.JComboBox<>();
-        btnGerarsenhaPioritaria = new javax.swing.JButton();
         btnGerarSenha = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblConfiguraçõesAtendimento = new javax.swing.JLabel();
@@ -115,6 +121,8 @@ public class TelaAtendente1 extends javax.swing.JFrame {
         tblDadosTotais1 = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         btnSairtelaAtendente = new javax.swing.JButton();
+        btnGerarsenhaPioritaria = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -423,34 +431,24 @@ public class TelaAtendente1 extends javax.swing.JFrame {
             }
         });
 
-        btnGerarsenhaPioritaria.setBackground(new java.awt.Color(255, 255, 204));
-        btnGerarsenhaPioritaria.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        btnGerarsenhaPioritaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/TelaAtendente/velho.png"))); // NOI18N
-        btnGerarsenhaPioritaria.setText("Senha Prioritaria");
-        btnGerarsenhaPioritaria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 102)));
-
         javax.swing.GroupLayout pnlOpcoesAtendimentoLayout = new javax.swing.GroupLayout(pnlOpcoesAtendimento);
         pnlOpcoesAtendimento.setLayout(pnlOpcoesAtendimentoLayout);
         pnlOpcoesAtendimentoLayout.setHorizontalGroup(
             pnlOpcoesAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOpcoesAtendimentoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(cbmGuiche, 0, 370, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGerarsenhaPioritaria, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(cbmGuiche, 0, 382, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlOpcoesAtendimentoLayout.setVerticalGroup(
             pnlOpcoesAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOpcoesAtendimentoLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(pnlOpcoesAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGerarsenhaPioritaria, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbmGuiche, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(cbmGuiche, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        pnlComponetes.add(pnlOpcoesAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 660, 150));
+        pnlComponetes.add(pnlOpcoesAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 410, 150));
 
         btnGerarSenha.setBackground(new java.awt.Color(153, 255, 153));
         btnGerarSenha.setText("Gerar Senha");
@@ -621,6 +619,21 @@ public class TelaAtendente1 extends javax.swing.JFrame {
 
         pnlComponetes.add(pnlMenuAtendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 690));
 
+        btnGerarsenhaPioritaria.setBackground(new java.awt.Color(255, 255, 204));
+        btnGerarsenhaPioritaria.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        btnGerarsenhaPioritaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/TelaAtendente/velho.png"))); // NOI18N
+        btnGerarsenhaPioritaria.setText("Senha Prioritaria");
+        btnGerarsenhaPioritaria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 102)));
+        pnlComponetes.add(btnGerarsenhaPioritaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 500, 220, 70));
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+        pnlComponetes.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 590, 220, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -656,15 +669,21 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     }//GEN-LAST:event_cbmGuicheActionPerformed
 
     private void btnGerarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarSenhaActionPerformed
+        if (senhaRepository == null) {
+            JOptionPane.showMessageDialog(this, "Erro: Repositório de senhas não inicializado!");
+            return;
+        }
 
         Senha novaSenha = new Senha();
         novaSenha.setTipo(rbtAtendimentoPioritario.isSelected() ? "PRIORITARIO" : "NORMAL");
         novaSenha.setGuicheResponsavel(cbmGuiche.getSelectedItem().toString());
+
         String prefixo = novaSenha.getTipo().equals("PRIORITARIO") ? "P" : "N";
-        novaSenha.setCodigo(prefixo + (int)(Math.random() * 999)); 
+        novaSenha.setCodigo(prefixo + (int)(Math.random() * 999));
+
         senhaRepository.save(novaSenha);
-        
-        javax.swing.JOptionPane.showMessageDialog(this, "Senha gerada com sucesso: " + novaSenha.getCodigo());
+
+        JOptionPane.showMessageDialog(this, "Senha " + novaSenha.getCodigo() + " gerada com sucesso!");
 
     }//GEN-LAST:event_btnGerarSenhaActionPerformed
 
@@ -693,6 +712,31 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     private void btnSairtelaAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairtelaAtendenteActionPerformed
        
     }//GEN-LAST:event_btnSairtelaAtendenteActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        Cliente cliente = new Cliente();
+    
+        cliente.setNome(txtNomeUsuario.getText());
+        cliente.setCpf(txtCpfUsuario.getText());
+        cliente.setTelefone(txtTelefoneUsuario.getText());
+        cliente.setCidade(txtCidadeUsuario.getText());
+        cliente.setBairro(txtBairroUsuario.getText());
+        cliente.setDescricao(txtDescricao.getText());
+
+        clienteRepository.save(cliente);
+
+        JOptionPane.showMessageDialog(this, "Cliente " + cliente.getNome() + " salvo com sucesso!");
+        atualizarTabela();
+
+        txtNomeUsuario.setText("");
+        txtCpfUsuario.setText("");
+        txtTelefoneUsuario.setText("");
+        txtCidadeUsuario.setText("");
+        txtBairroUsuario.setText("");
+        txtDescricao.setText("");
+
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -735,6 +779,7 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     private javax.swing.JButton btnGerarSenha;
     private javax.swing.JButton btnGerarsenhaPioritaria;
     private javax.swing.JButton btnSairtelaAtendente;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbmGuiche;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
