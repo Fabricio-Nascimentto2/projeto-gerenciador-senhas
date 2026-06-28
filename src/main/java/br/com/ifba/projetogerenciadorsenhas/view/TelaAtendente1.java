@@ -14,6 +14,7 @@ import br.com.ifba.projetogerenciadorsenhas.domain.Senha;
 import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
 import javax.swing.JOptionPane;
 import com.toedter.calendar.JDateChooser;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -56,6 +57,22 @@ public class TelaAtendente1 extends javax.swing.JFrame {
         }
     }
 
+    public Senha chamarProximo(String guiche) {
+        // 1. Busca todas as senhas aguardando
+        List<Senha> aguardando = senhaRepository.findByStatusOrderByDataEmissaoAsc("AGUARDANDO");
+
+        if (aguardando.isEmpty()) {
+            return null;
+        }
+
+        Senha proxima = aguardando.get(0);
+
+        proxima.setStatus("EM_ATENDIMENTO");
+        proxima.setDataAtendimento(LocalDateTime.now());
+        proxima.setGuicheResponsavel(guiche);
+
+        return senhaRepository.save(proxima);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -671,6 +688,16 @@ public class TelaAtendente1 extends javax.swing.JFrame {
     private void btnGerarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarSenhaActionPerformed
         
         int linhaSelecionada = tblDadosTotais1.getSelectedRow();
+
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um cliente!");
+            return;
+        }
+
+        if (clienteRepository == null || senhaRepository == null) {
+            JOptionPane.showMessageDialog(this, "Erro: Conexão com banco não iniciada!");
+            return;
+        }
 
         if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(this, "Por favor, selecione um cliente na tabela!");

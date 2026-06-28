@@ -16,4 +16,6 @@ import java.util.List;
 public interface SenhaRepository extends JpaRepository<Senha, Long> {
     
     List<Senha> findByStatusOrderByDataEmissaoAsc(String status);
+
+    public List<Senha> findByStatus(String em_atendimento);
 }

@@ -4,19 +4,44 @@
  */
 package br.com.ifba.projetogerenciadorsenhas.view;
 
+import br.com.ifba.projetogerenciadorsenhas.domain.Senha;
+import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
+import java.util.List;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author fabricio
  */
+@Component
 public class PainelChamanda extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PainelChamanda
-     */
-    public PainelChamanda() {
+    private final SenhaRepository senhaRepository;
+
+    public PainelChamanda(SenhaRepository senhaRepository) {
+        this.senhaRepository = senhaRepository;
         initComponents();
+        iniciarTimer();
+        setLocationRelativeTo(null);
     }
 
+    private void iniciarTimer() {
+        javax.swing.Timer timer = new javax.swing.Timer(3000, e -> atualizarDados());
+        timer.start();
+    }
+
+    private void atualizarDados() {
+        List<Senha> emAtendimento = senhaRepository.findByStatus("EM_ATENDIMENTO");
+
+        if (!emAtendimento.isEmpty()) {
+            Senha atual = emAtendimento.get(emAtendimento.size() - 1);
+            lblSenha.setText(atual.getCodigo());
+            lblTipoAtendimento.setText("GUICHÊ: " + atual.getGuicheResponsavel());
+        } else {
+            lblSenha.setText("AGUARDANDO");
+            lblTipoAtendimento.setText("---");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -199,41 +224,6 @@ public class PainelChamanda extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PainelChamanda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PainelChamanda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PainelChamanda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PainelChamanda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PainelChamanda().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

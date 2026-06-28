@@ -9,6 +9,7 @@ import br.com.ifba.projetogerenciadorsenhas.repository.PerfilRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
 import br.com.ifba.projetogerenciadorsenhas.repository.UsuarioRepository;
 import br.com.ifba.projetogerenciadorsenhas.service.UsuarioService;
+import br.com.ifba.projetogerenciadorsenhas.view.MenuPrincipal;
 import br.com.ifba.projetogerenciadorsenhas.view.TelaLogin;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -22,7 +23,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class ProjetoGerenciadorSenhas {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class).headless(false).run(args);
+        /*ConfigurableApplicationContext context = new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class).headless(false).run(args);
 
         ClienteRepository clienteRepository = context.getBean(ClienteRepository.class);
         PerfilRepository perfilRepository = context.getBean(PerfilRepository.class);
@@ -31,5 +32,14 @@ public class ProjetoGerenciadorSenhas {
         SenhaRepository senhaRepository = context.getBean(SenhaRepository.class);
 
         java.awt.EventQueue.invokeLater(() -> {new TelaLogin(clienteRepository,perfilRepository,usuarioRepository,usuarioService,senhaRepository).setVisible(true);});
+        */
+        ConfigurableApplicationContext context = new SpringApplicationBuilder(ProjetoGerenciadorSenhas.class)
+            .headless(false) // Necessário para abrir janelas Swing
+            .run(args);
+
+        // Pede ao Spring para instanciar e mostrar o MenuPrincipal
+        java.awt.EventQueue.invokeLater(() -> {
+            context.getBean(MenuPrincipal.class).setVisible(true);
+        });
     }
 }

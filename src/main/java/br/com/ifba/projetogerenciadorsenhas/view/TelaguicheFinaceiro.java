@@ -4,16 +4,37 @@
  */
 package br.com.ifba.projetogerenciadorsenhas.view;
 
+import br.com.ifba.projetogerenciadorsenhas.domain.Senha;
+import javax.swing.JOptionPane;
+import br.com.ifba.projetogerenciadorsenhas.repository.SenhaRepository;
+import br.com.ifba.projetogerenciadorsenhas.service.SenhaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.time.LocalDateTime;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author fabricio
  */
+@Component
 public class TelaguicheFinaceiro extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaguicheFinaceiro
      */
+    private final SenhaService senhaService;
+    private final SenhaRepository senhaRepository;
+
+
+    public TelaguicheFinaceiro(SenhaService senhaService, SenhaRepository senhaRepository) {
+        this.senhaService = senhaService;
+        this.senhaRepository = senhaRepository;
+        initComponents();
+    }
+
     public TelaguicheFinaceiro() {
+        this.senhaService = null;
+        this.senhaRepository = null;
         initComponents();
     }
 
@@ -295,7 +316,18 @@ public class TelaguicheFinaceiro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnChamaProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamaProximoActionPerformed
-        // TODO add your handling code here:
+        // Pega o guichê selecionado no combo box
+        String guiche = cbsStatus.getSelectedItem().toString(); 
+
+        // Chama o serviço
+        Senha chamada = senhaService.chamarProximo(guiche);
+
+        if (chamada != null) {
+            JOptionPane.showMessageDialog(this, "Chamando senha: " + chamada.getCodigo());
+            // Aqui você chamaria um método para atualizar a tabela
+        } else {
+            JOptionPane.showMessageDialog(this, "Fila vazia!");
+        }
     }//GEN-LAST:event_btnChamaProximoActionPerformed
 
     private void tblDadosTotaisAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblDadosTotaisAncestorAdded
