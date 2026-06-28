@@ -8,12 +8,12 @@ package br.com.ifba.projetogerenciadorsenhas.repository;
  * @author fabricio
  */
 import br.com.ifba.projetogerenciadorsenhas.domain.Cliente;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
-    public Cliente findByCpf(String cpfSelecionado);
-
+    List<Cliente> findByCpf(String cpf);
 }

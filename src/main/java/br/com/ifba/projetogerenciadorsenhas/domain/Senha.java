@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "senhas_atendimento")
+@Data
 public class Senha {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +39,7 @@ public class Senha {
     @Column(length = 100)
     private String guicheResponsavel;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 

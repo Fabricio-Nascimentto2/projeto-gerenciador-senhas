@@ -706,7 +706,16 @@ public class TelaAtendente1 extends javax.swing.JFrame {
 
         String cpfSelecionado = tblDadosTotais1.getValueAt(linhaSelecionada, 1).toString();
 
-        Cliente cliente = clienteRepository.findByCpf(cpfSelecionado);
+        //Cliente cliente = clienteRepository.findByCpf(cpfSelecionado);
+        List<Cliente> listaClientes = clienteRepository.findByCpf(cpfSelecionado);
+        
+        if (listaClientes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cliente não encontrado!");
+            return;
+        }
+
+        // Pega o primeiro da lista
+        Cliente cliente = listaClientes.get(0);
 
         Senha novaSenha = new Senha();
         novaSenha.setTipo(rbtAtendimentoPioritario.isSelected() ? "PRIORITARIO" : "NORMAL");

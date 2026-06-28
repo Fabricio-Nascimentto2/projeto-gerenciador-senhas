@@ -26,20 +26,33 @@ public class PainelChamanda extends javax.swing.JFrame {
     }
 
     private void iniciarTimer() {
-        javax.swing.Timer timer = new javax.swing.Timer(3000, e -> atualizarDados());
+        javax.swing.Timer timer = new javax.swing.Timer(5000, e -> atualizarDados());
         timer.start();
     }
 
     private void atualizarDados() {
         List<Senha> emAtendimento = senhaRepository.findByStatus("EM_ATENDIMENTO");
-
         if (!emAtendimento.isEmpty()) {
             Senha atual = emAtendimento.get(emAtendimento.size() - 1);
             lblSenha.setText(atual.getCodigo());
-            lblTipoAtendimento.setText("GUICHÊ: " + atual.getGuicheResponsavel());
+            lblTipoAtendimento.setText("GUICHÊ: " + (atual.getGuicheResponsavel() != null ? atual.getGuicheResponsavel() : "---"));
         } else {
             lblSenha.setText("AGUARDANDO");
             lblTipoAtendimento.setText("---");
+        }
+
+        List<Senha> aguardando = senhaRepository.findByStatus("AGUARDANDO");
+        preencherTabela(tblProximasSenhas, aguardando);
+
+        List<Senha> finalizadas = senhaRepository.findByStatus("FINALIZADO");
+        preencherTabela(tblUltimasSenhas, finalizadas);
+    }
+    
+    private void preencherTabela(javax.swing.JTable tabela, List<Senha> senhas) {
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tabela.getModel();
+        model.setRowCount(0);
+        for (Senha s : senhas) {
+            model.addRow(new Object[]{s.getCodigo(), s.getGuicheResponsavel()});
         }
     }
     /**
