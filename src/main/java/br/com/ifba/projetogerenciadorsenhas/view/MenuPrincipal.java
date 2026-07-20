@@ -58,95 +58,85 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlTelamenuPricinpal = new javax.swing.JPanel();
-        pnlBarraLateral = new javax.swing.JPanel();
-        btnCadastro = new javax.swing.JButton();
-        btnAtendimento = new javax.swing.JButton();
-        btnConfigurações = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
         btnNovoAtendimento = new javax.swing.JButton();
         bntPainelGuiche = new javax.swing.JButton();
         btnPainelTV = new javax.swing.JButton();
         btnRelatorios = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlTelamenuPricinpal.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTelamenuPricinpal.setBackground(new java.awt.Color(0, 204, 204));
+        pnlTelamenuPricinpal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlTelamenuPricinpal.setForeground(new java.awt.Color(153, 153, 153));
         pnlTelamenuPricinpal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlBarraLateral.setBackground(new java.awt.Color(0, 204, 204));
-        pnlBarraLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnCadastro.setText("Cadastro");
-        pnlBarraLateral.add(btnCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 178, 41));
-
-        btnAtendimento.setText("Atendimento");
-        pnlBarraLateral.add(btnAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 178, 41));
-
-        btnConfigurações.setText("Configurações");
-        pnlBarraLateral.add(btnConfigurações, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 180, 40));
-
-        btnSair.setText("Sair");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
-            }
-        });
-        pnlBarraLateral.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 40));
-
-        pnlTelamenuPricinpal.add(pnlBarraLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 430));
-
-        btnNovoAtendimento.setBackground(new java.awt.Color(51, 204, 0));
+        btnNovoAtendimento.setBackground(new java.awt.Color(102, 255, 102));
+        btnNovoAtendimento.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         btnNovoAtendimento.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovoAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/adicionar(1).png"))); // NOI18N
         btnNovoAtendimento.setText("Novo Atendimento");
         btnNovoAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoAtendimentoActionPerformed(evt);
             }
         });
-        pnlTelamenuPricinpal.add(btnNovoAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 160, 50));
+        pnlTelamenuPricinpal.add(btnNovoAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 240, 100));
 
         bntPainelGuiche.setBackground(new java.awt.Color(0, 102, 255));
+        bntPainelGuiche.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         bntPainelGuiche.setForeground(new java.awt.Color(255, 255, 255));
+        bntPainelGuiche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/relatorio-de-noticias.png"))); // NOI18N
         bntPainelGuiche.setText("Painel do Guichê");
         bntPainelGuiche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntPainelGuicheActionPerformed(evt);
             }
         });
-        pnlTelamenuPricinpal.add(bntPainelGuiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 160, 50));
+        pnlTelamenuPricinpal.add(bntPainelGuiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 240, 100));
 
         btnPainelTV.setBackground(new java.awt.Color(255, 153, 51));
+        btnPainelTV.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         btnPainelTV.setForeground(new java.awt.Color(255, 255, 255));
+        btnPainelTV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/tela-de-tv.png"))); // NOI18N
         btnPainelTV.setText("Painel de TV");
         btnPainelTV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPainelTVActionPerformed(evt);
             }
         });
-        pnlTelamenuPricinpal.add(btnPainelTV, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 170, 50));
+        pnlTelamenuPricinpal.add(btnPainelTV, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 240, 100));
 
-        btnRelatorios.setBackground(new java.awt.Color(153, 153, 153));
+        btnRelatorios.setBackground(new java.awt.Color(255, 51, 51));
+        btnRelatorios.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         btnRelatorios.setForeground(new java.awt.Color(255, 255, 255));
+        btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/relatorio.png"))); // NOI18N
         btnRelatorios.setText("Relatórios");
-        pnlTelamenuPricinpal.add(btnRelatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 320, 170, 50));
+        pnlTelamenuPricinpal.add(btnRelatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 240, 100));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Gerenciador de Senhas  ");
+        pnlTelamenuPricinpal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 430, 60));
+
+        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTelamenuPricinpal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 810, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTelamenuPricinpal, javax.swing.GroupLayout.PREFERRED_SIZE, 1036, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlTelamenuPricinpal, javax.swing.GroupLayout.DEFAULT_SIZE, 1118, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTelamenuPricinpal, javax.swing.GroupLayout.PREFERRED_SIZE, 428, Short.MAX_VALUE)
+            .addComponent(pnlTelamenuPricinpal, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSairActionPerformed
 
     private void bntPainelGuicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPainelGuicheActionPerformed
         // TODO add your handling code here:
@@ -168,14 +158,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntPainelGuiche;
-    private javax.swing.JButton btnAtendimento;
-    private javax.swing.JButton btnCadastro;
-    private javax.swing.JButton btnConfigurações;
     private javax.swing.JButton btnNovoAtendimento;
     private javax.swing.JButton btnPainelTV;
     private javax.swing.JButton btnRelatorios;
-    private javax.swing.JButton btnSair;
-    private javax.swing.JPanel pnlBarraLateral;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel pnlTelamenuPricinpal;
     // End of variables declaration//GEN-END:variables
 }
